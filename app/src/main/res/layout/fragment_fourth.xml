@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".FourthFragment">
+
+<TextView
+    android:id="@+id/textview_fourth"
+    android:layout_width="314dp"
+    android:layout_height="360dp"
+    android:text="@string/note_elaborate"
+    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+    app:layout_constraintBottom_toTopOf="@id/button_fourth"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:text="You can add a note here if you want, eg elaborate on how you're feeling or if you're experiencing any symptoms, etc:" />
+
+<EditText
+    android:id="@+id/edittext_fourth"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:hint="@string/type_note"
+    android:layout_marginTop="10dp"
+    android:inputType="textPersonName|textCapWords"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@id/textview_fourth"/>
+
+<Button
+    android:id="@+id/button_fourth"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/next"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.498"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/textview_fourth"
+    app:layout_constraintVertical_bias="0.24"
+    tools:text="Next" />
+
+<Button
+    android:id="@+id/button_fourth_alt"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/previous"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.498"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/button_fourth"
+    tools:text="Previous" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

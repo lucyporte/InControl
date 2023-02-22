@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1019018738691",
+    "project_id": "in-control-b3e93",
+    "storage_bucket": "in-control-b3e93.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1019018738691:android:cc79e5b4710826c3dce236",
+        "android_client_info": {
+          "package_name": "com.example.incontrol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1019018738691-mcjhghhigppr9c8hgduj9faaaalgt7me.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJFMcMY3RSW-JnqkzWRKRbI1yMg32jnfs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1019018738691-mcjhghhigppr9c8hgduj9faaaalgt7me.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
