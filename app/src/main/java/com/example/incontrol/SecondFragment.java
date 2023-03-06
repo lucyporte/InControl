@@ -21,6 +21,7 @@ import com.example.incontrol.databinding.FragmentSecondBinding;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.CancellationToken;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -43,6 +44,7 @@ public class SecondFragment extends Fragment {
     public FusedLocationProviderClient fusedLocationClient;
     public String lstring;
     public CancellationToken token;
+    public Task<Location> l;
 
     @Override
     public View onCreateView(
@@ -77,10 +79,24 @@ public class SecondFragment extends Fragment {
                 Date t = Calendar.getInstance().getTime();
                 tstring = t.toString();
                 tRef.setValue(tstring);
-                @SuppressLint("MissingPermission") Task<Location> l = fusedLocationClient.getCurrentLocation(PRIORITY_BALANCED_POWER_ACCURACY, token);
-                DatabaseReference lRef = database.getReference("Info/Location");
-                lstring = l.toString();
-                lRef.setValue(lstring);
+                @SuppressLint("MissingPermission") Task<Location> l = fusedLocationClient.getCurrentLocation(PRIORITY_BALANCED_POWER_ACCURACY, token)
+                        .addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
+                            @Override
+                            public void onSuccess(Location location) {
+                                if (location != null) {
+                                    DatabaseReference lRef = database.getReference("Info/Location");
+                                    lstring = location.toString();
+                                    lRef.setValue(lstring);
+                                }
+                                else{
+                                    DatabaseReference lRef = database.getReference("Info/Location");
+                                    lstring = "null";
+                                    lRef.setValue(lstring);
+                                }
+
+                            }
+                        });
+
 
                 //task.isSuccessful
 
