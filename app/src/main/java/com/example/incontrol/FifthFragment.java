@@ -27,6 +27,7 @@ public class FifthFragment extends Fragment {
     public Button b;
     public String s = "Hi";
     public String strpass;
+    public String postId;
 
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +71,20 @@ public class FifthFragment extends Fragment {
                 strpass = binding.edittextFifthAlt.getText().toString().trim();
                 uRef.setValue(s);
                 pRef.setValue(strpass);
+
+                DatabaseReference usersRef = database.getReference("users");
+                DatabaseReference pushRef = usersRef.push();
+                String postId = pushRef.getKey();
+                DatabaseReference nameRef = database.getReference("users/" + postId + "/name");
+                nameRef.setValue(s);
+                //usersRef.push().setValue(s);
+                DatabaseReference passRef = database.getReference("users/" + postId + "/pass");
+                passRef.setValue(strpass);
+
+                Bundle result = new Bundle();
+                result.putString("bundleKey", postId);
+                getParentFragmentManager().setFragmentResult("requestKey", result);
+
 
                 //s = edittext_fifth.getText().toString().trim();
 

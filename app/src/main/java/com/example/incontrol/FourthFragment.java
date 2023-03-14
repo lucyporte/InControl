@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.incontrol.databinding.FragmentFourthBinding;
@@ -19,6 +20,7 @@ public class FourthFragment extends Fragment {
 
     private FragmentFourthBinding binding;
     public String n;
+    public String newPostId;
 
     @Override
     public View onCreateView(
@@ -34,6 +36,16 @@ public class FourthFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        getParentFragmentManager().setFragmentResultListener("requestKey2", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
+                // We use a String here, but any type that can be put in a Bundle is supported
+                String result = bundle.getString("bundleKey2");
+                newPostId = result;
+                // Do something with the result
+            }
+        });
+
         binding.buttonFourth.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View view) {
@@ -43,6 +55,12 @@ public class FourthFragment extends Fragment {
                    DatabaseReference nRef = database.getReference("Info/Note");
                    n = binding.edittextFourth.getText().toString().trim();
                    nRef.setValue(n);
+
+                   //DatabaseReference usersRef = database.getReference("users");
+                   //DatabaseReference pushRef = usersRef.push();
+                   //String postId = pushRef.getKey();
+                   DatabaseReference noteRef = database.getReference("users/" + newPostId + "/note");
+                   noteRef.setValue(n);
                }
            }
         );
