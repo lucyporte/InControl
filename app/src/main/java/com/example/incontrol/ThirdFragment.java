@@ -30,12 +30,20 @@ public class ThirdFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonThirdAlt.setOnClickListener(new View.OnClickListener() {
+        binding.buttonThird.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(ThirdFragment.this)
-                        .navigate(R.id.action_ThirdFragment_to_FirstFragment);
+                        .navigate(R.id.action_thirdFragment_to_seventhFragment);
             }
         });
+
+//        binding.buttonThirdAlt.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                NavHostFragment.findNavController(ThirdFragment.this)
+//                        .navigate(R.id.action_ThirdFragment_to_FirstFragment);
+//            }
+//        });
     }
 }

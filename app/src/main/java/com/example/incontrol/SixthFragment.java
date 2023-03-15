@@ -33,12 +33,12 @@ public class SixthFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonSixthAlt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SixthFragment.this)
-                        .navigate(R.id.action_sixthFragment_to_SecondFragment);
-            }
-        });
+//        binding.buttonSixthAlt.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                NavHostFragment.findNavController(SixthFragment.this)
+//                        .navigate(R.id.action_sixthFragment_to_SecondFragment);
+//            }
+//        });
     }
 }

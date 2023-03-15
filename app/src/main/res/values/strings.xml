@@ -33,4 +33,7 @@
     <string name="login_failed">"Login failed"</string>
     <string name="log">Login or Register</string>
     <string name="note_elaborate">You can add a note here if you want, eg elaborate on how you\'re feeling or whether you\'re experiencing any symptoms, etc</string>
+    <string name="back">Back</string>
+    <string name="data_text">Data text</string>
+    <string name="alt_data_text">Alt Data Text</string>
 </resources>

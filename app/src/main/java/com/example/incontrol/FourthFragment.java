@@ -50,7 +50,7 @@ public class FourthFragment extends Fragment {
                @Override
                public void onClick(View view) {
                    NavHostFragment.findNavController(FourthFragment.this)
-                           .navigate(R.id.action_FourthFragment_to_ThirdFragment);
+                           .navigate(R.id.action_fourthFragment_to_thirdFragment);
                    FirebaseDatabase database = FirebaseDatabase.getInstance("https://in-control-b3e93-default-rtdb.europe-west1.firebasedatabase.app/");
                    DatabaseReference nRef = database.getReference("Info/Note");
                    n = binding.edittextFourth.getText().toString().trim();
@@ -65,13 +65,13 @@ public class FourthFragment extends Fragment {
            }
         );
 
-        binding.buttonFourthAlt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(FourthFragment.this)
-                        .navigate(R.id.action_fourthFragment_to_SecondFragment);
-            }
-        }
-        );
+//        binding.buttonFourthAlt.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                NavHostFragment.findNavController(FourthFragment.this)
+//                        .navigate(R.id.action_fourthFragment_to_SecondFragment);
+//            }
+//        }
+        //);
     }
 }
