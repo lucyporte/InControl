@@ -109,7 +109,7 @@ public class SeventhFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(SeventhFragment.this)
-                        .navigate(R.id.action_seventhFragment_to_FirstFragment);
+                        .navigate(R.id.action_seventhFragment_to_eigthFragment);
             }
         });
     }

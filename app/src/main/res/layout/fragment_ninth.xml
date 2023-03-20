@@ -4,23 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/_0"
-    tools:context=".ThirdFragment">
+    android:background="@drawable/_1"
+    tools:context=".NinthFragment">
 
     <TextView
-        android:id="@+id/textview_third"
+        android:id="@+id/textview_ninth"
         android:layout_width="314dp"
         android:layout_height="180dp"
-        android:text="@string/Do_you"
+        android:text="@string/mess"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintBottom_toTopOf="@id/button_third"
+        app:layout_constraintBottom_toTopOf="@id/button_ninth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="This will be shared with your therapist or supporter" />
+        tools:text="Messages:" />
 
     <Button
-        android:id="@+id/button_third"
+        android:id="@+id/button_ninth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/okay"
@@ -28,20 +28,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_third"
+        app:layout_constraintTop_toBottomOf="@id/textview_ninth"
         app:layout_constraintVertical_bias="0.24"
         tools:text="Okay" />
 
     <Button
-        android:id="@+id/button_third_alt"
+        android:id="@+id/button_ninth_alt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/no_thanks"
+        android:text="@string/back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_third"
-        tools:text="No thanks" />
+        app:layout_constraintTop_toBottomOf="@id/button_ninth"
+        tools:text="Back" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

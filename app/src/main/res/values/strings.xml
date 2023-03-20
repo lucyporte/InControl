@@ -17,7 +17,7 @@
     <string name="start">Start</string>
     <string name="welcome_to_your_ocd_management_app">Welcome to your OCD management app</string>
     <string name="How">How are you feeling right now?</string>
-    <string name="Do_you">Do you want to share with a therapist or supporter?</string>
+    <string name="Do_you">This will be shared with your therapist or supporter</string>
     <string name="okay">Okay</string>
     <string name="no_thanks">No thanks</string>
     <string name="You_can">You can add a note here if you want:</string>
@@ -35,5 +35,14 @@
     <string name="note_elaborate">You can add a note here if you want, eg elaborate on how you\'re feeling or whether you\'re experiencing any symptoms, etc</string>
     <string name="back">Back</string>
     <string name="data_text">Data text</string>
-    <string name="alt_data_text">Alt Data Text</string>
+    <string name="alt_data_text">Data:</string>
+    <string name="check">Check-in</string>
+    <string name="stats">Stats</string>
+    <string name="messages">Messages</string>
+    <string name="mess">Messages:</string>
+    <string name="username">Username:</string>
+    <string name="password">Password:</string>
+    <string name="typename">Type your username here:</string>
+    <string name="typepass">Type your password here:</string>
+    <string name="home">Home</string>
 </resources>

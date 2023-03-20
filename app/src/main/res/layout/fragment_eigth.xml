@@ -4,44 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/_0"
-    tools:context=".ThirdFragment">
+    android:background="@drawable/_8"
+    tools:context=".EigthFragment">
 
     <TextView
-        android:id="@+id/textview_third"
+        android:id="@+id/textview_eigth"
         android:layout_width="314dp"
-        android:layout_height="180dp"
-        android:text="@string/Do_you"
+        android:layout_height="100dp"
+        android:text="@string/home"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintBottom_toTopOf="@id/button_third"
+        app:layout_constraintBottom_toTopOf="@id/button_eigth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="This will be shared with your therapist or supporter" />
+        tools:text="Home" />
 
     <Button
-        android:id="@+id/button_third"
+        android:id="@+id/button_eigth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/okay"
+        android:text="@string/check"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_third"
+        app:layout_constraintTop_toBottomOf="@id/textview_eigth"
         app:layout_constraintVertical_bias="0.24"
-        tools:text="Okay" />
+        tools:text="Check-in" />
 
     <Button
-        android:id="@+id/button_third_alt"
+        android:id="@+id/button_eigth_alt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/no_thanks"
+        android:text="@string/stats"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_third"
-        tools:text="No thanks" />
+        app:layout_constraintTop_toBottomOf="@id/button_eigth"
+        tools:text="Stats" />
+
+    <Button
+        android:id="@+id/button_eigth_alt_alt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/messages"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_eigth_alt"
+        tools:text="Messages" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

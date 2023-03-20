@@ -60,7 +60,7 @@ public class FifthFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(FifthFragment.this)
-                        .navigate(R.id.action_fifthFragment_to_SecondFragment);
+                        .navigate(R.id.action_fifthFragment_to_eigthFragment);
                 // Write a message to the database
                 FirebaseDatabase database = FirebaseDatabase.getInstance("https://in-control-b3e93-default-rtdb.europe-west1.firebasedatabase.app/");
                 DatabaseReference myRef = database.getReference("Info");
