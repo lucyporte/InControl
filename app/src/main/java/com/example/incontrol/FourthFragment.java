@@ -21,6 +21,7 @@ public class FourthFragment extends Fragment {
     private FragmentFourthBinding binding;
     public String n;
     public String newPostId;
+    public String otherPostId;
 
     @Override
     public View onCreateView(
@@ -61,6 +62,11 @@ public class FourthFragment extends Fragment {
                    //String postId = pushRef.getKey();
                    DatabaseReference noteRef = database.getReference("users/" + newPostId + "/note");
                    noteRef.setValue(n);
+
+                   otherPostId = newPostId;
+                   Bundle result = new Bundle();
+                   result.putString("bundleKey3", otherPostId);
+                   getParentFragmentManager().setFragmentResult("requestKey3", result);
                }
            }
         );
