@@ -26,10 +26,9 @@
         android:text="@string/alright"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textview_second"
-        app:layout_constraintVertical_bias="0.24"
+        app:layout_constraintBottom_toTopOf="@id/button_second_alt"
         tools:text="Alright" />
 
     <Button
@@ -42,5 +41,33 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_second"
+        app:layout_constraintBottom_toTopOf="@id/edittext_second"
         tools:text="Not So Good" />
+
+    <EditText
+        android:id="@+id/edittext_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter alternative location here"
+        android:layout_marginTop="10dp"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/edittext_second_alt"
+        app:layout_constraintTop_toBottomOf="@id/button_second_alt"/>
+
+
+    <EditText
+        android:id="@+id/edittext_second_alt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter alternative time here"
+        android:layout_marginTop="10dp"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edittext_second"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

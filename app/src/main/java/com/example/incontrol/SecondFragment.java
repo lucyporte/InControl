@@ -66,6 +66,11 @@ public class SecondFragment extends Fragment {
     public DatabaseReference newLocRef;
     public long dbnumber;
     public String dbnum;
+    public DatabaseReference moodRef;
+    public DatabaseReference timeRef;
+    public DatabaseReference locRef;
+    public String userloc;
+    public String usertime;
 
     @Override
     public View onCreateView(
@@ -114,28 +119,36 @@ public class SecondFragment extends Fragment {
                 FirebaseDatabase database = FirebaseDatabase.getInstance("https://in-control-b3e93-default-rtdb.europe-west1.firebasedatabase.app/");
 
                 DatabaseReference usersRef = database.getReference("users");
-                DatabaseReference moodRef = database.getReference("users/-NR00h0zLo7KfJoFP7M6/mood");
 
                 m = binding.buttonSecond.getText().toString().trim();
 
                 Date t = Calendar.getInstance().getTime();
                 tstring = t.toString();
 
-
+                userloc = binding.edittextSecond.getText().toString().trim();
+                usertime = binding.edittextSecondAlt.getText().toString().trim();
 
                 usersRef.addListenerForSingleValueEvent(new ValueEventListener() { //Close these?
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        long getchildrencount = snapshot.child("-NR00h0zLo7KfJoFP7M6/mood").getChildrenCount();
+                        long getchildrencount = snapshot.child(postId + "/mood").getChildrenCount();
                         long databasenumber = getchildrencount + 1;
                         newMoodRef = database.getReference("users/-NR00h0zLo7KfJoFP7M6/mood/" + databasenumber);
+                        moodRef = database.getReference("users/" + postId + "/mood/" + databasenumber);
+                        moodRef.setValue(m);
                         newMoodRef.setValue(m);
+
                         newTimeRef = database.getReference("users/-NR00h0zLo7KfJoFP7M6/time/" + databasenumber);
                         newTimeRef.setValue(tstring);
-//                        DatabaseReference newLocRef = database.getReference("users/-NR00h0zLo7KfJoFP7M6/loc" + databasenumber);
-//                        newLocRef.setValue(lstring);
+
+                        timeRef = database.getReference("users/" + postId + "/time/" + databasenumber);
+                        if(!(usertime.equals(""))){
+                            timeRef.setValue(usertime);
+                        }
+                        else {
+                            timeRef.setValue(tstring);
+                        }
                         setnumber(databasenumber);
-//                        newPostId = postId;
 
                         String dbnum = databasenumber+"";
                         Bundle resulttt = new Bundle();
@@ -148,22 +161,28 @@ public class SecondFragment extends Fragment {
                                     @Override
                                     public void onSuccess(Location location) {
                                         if (location != null) {
-//                                    DatabaseReference lRef = database.getReference("Info/Location");
                                             lstring = location.toString();
-//                                    lRef.setValue(lstring);
                                             newLocRef = database.getReference("users/-NR00h0zLo7KfJoFP7M6/loc/" + databasenumber);
                                             newLocRef.setValue(lstring);
-//                                            DatabaseReference locRef = database.getReference("users/" + postId + "/loc");
-//                                            locRef.setValue(lstring);
+                                            locRef = database.getReference("users/" + postId + "/loc/" + databasenumber);
+                                            if(!(userloc.equals(""))){
+                                                locRef.setValue(userloc);
+                                            }
+                                            else {
+                                                locRef.setValue(lstring);
+                                            }
                                         }
                                         else{
-//                                    DatabaseReference lRef = database.getReference("Info/Location");
                                             lstring = "null";
-//                                    lRef.setValue(lstring);
                                             newLocRef = database.getReference("users/-NR00h0zLo7KfJoFP7M6/loc/" + databasenumber);
                                             newLocRef.setValue(lstring);
-//                                            DatabaseReference locRef = database.getReference("users/" + postId + "/loc");
-//                                            locRef.setValue(lstring);
+                                            locRef = database.getReference("users/" + postId + "/loc/" + databasenumber);
+                                            if(!(userloc.equals(""))){
+                                                locRef.setValue(userloc);
+                                            }
+                                            else {
+                                                locRef.setValue(lstring);
+                                            }
                                         }
                                     }
                                 });
@@ -178,13 +197,6 @@ public class SecondFragment extends Fragment {
                     }
                 });
 
-//                DatabaseReference mRef = database.getReference("Info/Mood");
-
-//                mRef.setValue(m);
-
-//                DatabaseReference tRef = database.getReference("Info/Time");
-
-//                tRef.setValue(tstring);
 
                 newPostId = postId;
                 Bundle result = new Bundle();
@@ -270,6 +282,8 @@ public class SecondFragment extends Fragment {
 
 
 
+
+
 //        private FusedLocationProviderClient fusedLocationClient;
 //        @Override
 //        protected void onCreate(Bundle savedInstanceState) {
@@ -290,3 +304,28 @@ public class SecondFragment extends Fragment {
 //                .navigate(R.id.action_SecondFragment_to_FourthFragment));
 //        n = binding.buttonSecondAlt.getText().toString().trim();
 //        mRef.setValue(n);
+
+
+//                DatabaseReference moodRef = database.getReference("users/-NR00h0zLo7KfJoFP7M6/mood");
+//                        DatabaseReference newLocRef = database.getReference("users/-NR00h0zLo7KfJoFP7M6/loc" + databasenumber);
+//                        newLocRef.setValue(lstring);
+
+//                        newPostId = postId;
+
+
+//                                    DatabaseReference lRef = database.getReference("Info/Location");
+//                                    lRef.setValue(lstring);
+//                                            DatabaseReference locRef = database.getReference("users/" + postId + "/loc");
+//                                            locRef.setValue(lstring);
+//                                    DatabaseReference lRef = database.getReference("Info/Location");
+//                                    lRef.setValue(lstring);
+//                                            DatabaseReference locRef = database.getReference("users/" + postId + "/loc");
+//                                            locRef.setValue(lstring);
+
+//                DatabaseReference mRef = database.getReference("Info/Mood");
+
+//                mRef.setValue(m);
+
+//                DatabaseReference tRef = database.getReference("Info/Time");
+
+//                tRef.setValue(tstring);

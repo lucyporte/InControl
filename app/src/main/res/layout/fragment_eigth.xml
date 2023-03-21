@@ -30,6 +30,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textview_eigth"
         app:layout_constraintVertical_bias="0.24"
+        app:layout_constraintBottom_toTopOf="@id/button_eigth_alt"
         tools:text="Check-in" />
 
     <Button
@@ -42,6 +43,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_eigth"
+        app:layout_constraintBottom_toTopOf="@id/button_eigth_alt_alt"
         tools:text="Stats" />
 
     <Button
@@ -55,5 +57,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_eigth_alt"
         tools:text="Messages" />
+
+    <Button
+        android:id="@+id/button_eigth_alt_alt_alt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text = "Logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_eigth_alt_alt"
+        app:layout_constraintBaseline_toBottomOf="parent"
+        tools:text="Logout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

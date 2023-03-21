@@ -76,7 +76,7 @@ public class FourthFragment extends Fragment {
                    //DatabaseReference usersRef = database.getReference("users");
                    //DatabaseReference pushRef = usersRef.push();
                    //String postId = pushRef.getKey();
-                   DatabaseReference noteRef = database.getReference("users/" + newPostId + "/note");
+                   DatabaseReference noteRef = database.getReference("users/" + newPostId + "/note/" + dbnumber);
                    noteRef.setValue(n);
 
                    newNoteRef = database.getReference("users/-NR00h0zLo7KfJoFP7M6/note/" + dbnumber);

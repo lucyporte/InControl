@@ -15,8 +15,13 @@ import com.example.incontrol.databinding.FragmentFifthBinding;
 import com.example.incontrol.databinding.FragmentFourthBinding;
 import com.example.incontrol.databinding.FragmentSecondBinding;
 import com.example.incontrol.databinding.FragmentThirdBinding;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 
 public class FifthFragment extends Fragment {
 
@@ -25,9 +30,11 @@ public class FifthFragment extends Fragment {
     public EditText passtext;
     public TextView t;
     public Button b;
-    public String s = "Hi";
-    public String strpass;
+    public String uname = "Hi";
+    public String pword;
     public String postId;
+    public String userId;
+    public String value;
 
     @Override
     public View onCreateView(
@@ -54,27 +61,83 @@ public class FifthFragment extends Fragment {
 //                myRef.setValue("Info");
 //                DatabaseReference uRef = database.getReference("Info/Username");
 //                DatabaseReference pRef = database.getReference("Info/Password");
-                s = binding.edittextFifth.getText().toString().trim();
-                strpass = binding.edittextFifthAlt.getText().toString().trim();
+                uname = binding.edittextFifth.getText().toString().trim();
+                pword = binding.edittextFifthAlt.getText().toString().trim();
 //                uRef.setValue(s);
 //                pRef.setValue(strpass);
 
-                DatabaseReference usersRef = database.getReference("users");
-                DatabaseReference pushRef = usersRef.push();
-                String postId = pushRef.getKey();
-                DatabaseReference nameRef = database.getReference("users/" + postId + "/name");
-                nameRef.setValue(s);
-                //usersRef.push().setValue(s);
-                DatabaseReference passRef = database.getReference("users/" + postId + "/pass");
-                passRef.setValue(strpass);
 
-                Bundle result = new Bundle();
-                result.putString("bundleKey", postId);
-                getParentFragmentManager().setFragmentResult("requestKey", result);
+                DatabaseReference usersRef = database.getReference("users");
+                usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot datakey : snapshot.getChildren()) {
+                            if(datakey.child("name").getValue() != null && datakey.child("name").getValue().equals(uname) && datakey.child("pass").getValue()!=null && datakey.child("pass").getValue().equals(pword)){
+                                value = datakey.getKey();
+                                setVal(value);
+                                break;
+                            }
+                            else{
+                                DatabaseReference pushRef = usersRef.push();
+                                value = pushRef.getKey();
+                                setVal(value);
+
+                            }
+                        }
+
+                        postId = getVal();
+
+                        Bundle result = new Bundle();
+                        result.putString("bundleKey", postId);
+                        getParentFragmentManager().setFragmentResult("requestKey", result);
+
+                        DatabaseReference nameRef = database.getReference("users/" + postId + "/name");
+                        nameRef.setValue(uname);
+                        //usersRef.push().setValue(s);
+                        DatabaseReference passRef = database.getReference("users/" + postId + "/pass");
+                        passRef.setValue(pword);
+
+
+//                        long moodcount = snapshot.child("-NR00h0zLo7KfJoFP7M6/mood").getChildrenCount();
+//                        String a = "Data:\n\n";
+//                        for (long i = moodcount; i-- > moodcount-3;) {
+//                            String getloc = snapshot.child("-NR00h0zLo7KfJoFP7M6/loc/" + i).getValue(String.class);
+//                            String gettime = snapshot.child("-NR00h0zLo7KfJoFP7M6/time/" + i).getValue(String.class);
+//                            String getmood = snapshot.child("-NR00h0zLo7KfJoFP7M6/mood/" + i).getValue(String.class);
+//                            String getnote = snapshot.child("-NR00h0zLo7KfJoFP7M6/note/" + i).getValue(String.class);
+//                            a = a + getloc + " " + gettime + " " + getmood + " " + getnote + "\n\n";
+////                String bigstring = getloc + "\n" + gettime + "\n" + getmood + "\n" + getnote;
+//                        }
+//                        binding.textviewSeventh.setText(a);
+//                    }
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//                        System.out.println("The read failed: " + error.getCode());
+//                    }
+//                });
+
+
+
+
 
             }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        System.out.println("The read failed: " + error.getCode());
+                    }
         });
     }
+    });
+    }
+
+    public void setVal(String s) {
+        this.postId = s;
+    }
+
+    public String getVal() {
+        return postId;
+    }
+
 }
 
 

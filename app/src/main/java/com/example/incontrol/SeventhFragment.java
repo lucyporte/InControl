@@ -61,13 +61,13 @@ public class SeventhFragment extends Fragment {
         dataRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                long moodcount = snapshot.child("-NR00h0zLo7KfJoFP7M6/mood").getChildrenCount();
+                long moodcount = snapshot.child(myPostId + "/mood").getChildrenCount();
                 String a = "Data:\n\n";
                 for (long i = moodcount; i-- > moodcount-3;) {
-                    String getloc = snapshot.child("-NR00h0zLo7KfJoFP7M6/loc/" + i).getValue(String.class);
-                    String gettime = snapshot.child("-NR00h0zLo7KfJoFP7M6/time/" + i).getValue(String.class);
-                    String getmood = snapshot.child("-NR00h0zLo7KfJoFP7M6/mood/" + i).getValue(String.class);
-                    String getnote = snapshot.child("-NR00h0zLo7KfJoFP7M6/note/" + i).getValue(String.class);
+                    String getloc = snapshot.child(myPostId + "/loc/" + i).getValue(String.class);
+                    String gettime = snapshot.child(myPostId + "/time/" + i).getValue(String.class);
+                    String getmood = snapshot.child(myPostId + "/mood/" + i).getValue(String.class);
+                    String getnote = snapshot.child(myPostId + "/note/" + i).getValue(String.class);
                     a = a + getloc + " " + gettime + " " + getmood + " " + getnote + "\n\n";
 //                String bigstring = getloc + "\n" + gettime + "\n" + getmood + "\n" + getnote;
                 }
@@ -78,10 +78,7 @@ public class SeventhFragment extends Fragment {
                 System.out.println("The read failed: " + error.getCode());
             }
         });
-
-        textDisplay = "hello";
         //Objects.requireNonNull(binding.textviewSeventh).setText(textDisplay);
-        newstring = "Ooohh";
 
         //getname = datasnap.child(myPostId).child("name").getValue(String.class);
 

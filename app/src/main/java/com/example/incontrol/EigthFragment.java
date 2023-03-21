@@ -55,5 +55,13 @@ public class EigthFragment extends Fragment {
             }
         });
 
+        binding.buttonEigthAltAltAlt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(EigthFragment.this)
+                        .navigate(R.id.action_eigthFragment_to_fifthFragment);
+            }
+        });
+
     }
 }

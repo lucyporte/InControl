@@ -122,6 +122,12 @@
             app:destination="@id/ninthFragment"
             app:enterAnim="@anim/nav_default_pop_enter_anim"
             app:popEnterAnim="@animator/nav_default_pop_enter_anim" />
+
+        <action
+            android:id="@+id/action_eigthFragment_to_fifthFragment"
+            app:destination="@id/fifthFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:popEnterAnim="@animator/nav_default_pop_enter_anim" />
     </fragment>
 
     <fragment
