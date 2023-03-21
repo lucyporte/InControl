@@ -1,5 +1,7 @@
 package com.example.incontrol;
 
+import static java.lang.Integer.valueOf;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +24,9 @@ public class FourthFragment extends Fragment {
     public String n;
     public String newPostId;
     public String otherPostId;
+    public String dbnumber;
+    public int dbnum;
+    public DatabaseReference newNoteRef;
 
     @Override
     public View onCreateView(
@@ -47,6 +52,17 @@ public class FourthFragment extends Fragment {
             }
         });
 
+        getParentFragmentManager().setFragmentResultListener("requestKeyA", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
+                // We use a String here, but any type that can be put in a Bundle is supported
+                String resulttt = bundle.getString("bundleKeyA");
+                dbnumber = resulttt;
+//                dbnum = valueOf(dbnumber);
+                // Do something with the result
+            }
+        });
+
         binding.buttonFourth.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View view) {
@@ -62,6 +78,9 @@ public class FourthFragment extends Fragment {
                    //String postId = pushRef.getKey();
                    DatabaseReference noteRef = database.getReference("users/" + newPostId + "/note");
                    noteRef.setValue(n);
+
+                   newNoteRef = database.getReference("users/-NR00h0zLo7KfJoFP7M6/note/" + dbnumber);
+                   newNoteRef.setValue(n);
 
                    otherPostId = newPostId;
                    Bundle result = new Bundle();

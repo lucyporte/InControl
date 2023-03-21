@@ -25,14 +25,18 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.CancellationToken;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.ValueEventListener;
 
 //import android.support.annotation.NonNull;
 //import android.support.v4.app.Fragment;
@@ -56,7 +60,12 @@ public class SecondFragment extends Fragment {
     Context context = getActivity();
     public String postId;
     public String newPostId;
-
+    public long databasenumber;
+    public DatabaseReference newMoodRef;
+    public DatabaseReference newTimeRef;
+    public DatabaseReference newLocRef;
+    public long dbnumber;
+    public String dbnum;
 
     @Override
     public View onCreateView(
@@ -65,12 +74,6 @@ public class SecondFragment extends Fragment {
     ) {
         binding = FragmentSecondBinding.inflate(inflater, container, false);
         return binding.getRoot();
-
-//        private FusedLocationProviderClient fusedLocationClient;
-//        @Override
-//        protected void onCreate(Bundle savedInstanceState) {
-//            fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-//        }
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -109,38 +112,79 @@ public class SecondFragment extends Fragment {
                 NavHostFragment.findNavController(SecondFragment.this)
                         .navigate(R.id.action_SecondFragment_to_FourthFragment);
                 FirebaseDatabase database = FirebaseDatabase.getInstance("https://in-control-b3e93-default-rtdb.europe-west1.firebasedatabase.app/");
-                DatabaseReference mRef = database.getReference("Info/Mood");
+
+                DatabaseReference usersRef = database.getReference("users");
+                DatabaseReference moodRef = database.getReference("users/-NR00h0zLo7KfJoFP7M6/mood");
+
                 m = binding.buttonSecond.getText().toString().trim();
-                mRef.setValue(m);
-                DatabaseReference moodRef = database.getReference("users/" + postId + "/mood");
-                moodRef.setValue(m);
-                DatabaseReference tRef = database.getReference("Info/Time");
+
                 Date t = Calendar.getInstance().getTime();
                 tstring = t.toString();
-                tRef.setValue(tstring);
-                DatabaseReference timeRef = database.getReference("users/" + postId + "/time");
-                timeRef.setValue(tstring);
-                @SuppressLint("MissingPermission") Task<Location> l = fusedLocationClient.getCurrentLocation(PRIORITY_BALANCED_POWER_ACCURACY, token)
-                        .addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
-                            @Override
-                            public void onSuccess(Location location) {
-                                if (location != null) {
-                                    DatabaseReference lRef = database.getReference("Info/Location");
-                                    lstring = location.toString();
-                                    lRef.setValue(lstring);
-                                    DatabaseReference locRef = database.getReference("users/" + postId + "/loc");
-                                    locRef.setValue(lstring);
-                                }
-                                else{
-                                    DatabaseReference lRef = database.getReference("Info/Location");
-                                    lstring = "null";
-                                    lRef.setValue(lstring);
-                                    DatabaseReference locRef = database.getReference("users/" + postId + "/loc");
-                                    locRef.setValue(lstring);
-                                }
 
-                            }
-                        });
+
+
+                usersRef.addListenerForSingleValueEvent(new ValueEventListener() { //Close these?
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        long getchildrencount = snapshot.child("-NR00h0zLo7KfJoFP7M6/mood").getChildrenCount();
+                        long databasenumber = getchildrencount + 1;
+                        newMoodRef = database.getReference("users/-NR00h0zLo7KfJoFP7M6/mood/" + databasenumber);
+                        newMoodRef.setValue(m);
+                        newTimeRef = database.getReference("users/-NR00h0zLo7KfJoFP7M6/time/" + databasenumber);
+                        newTimeRef.setValue(tstring);
+//                        DatabaseReference newLocRef = database.getReference("users/-NR00h0zLo7KfJoFP7M6/loc" + databasenumber);
+//                        newLocRef.setValue(lstring);
+                        setnumber(databasenumber);
+//                        newPostId = postId;
+
+                        String dbnum = databasenumber+"";
+                        Bundle resulttt = new Bundle();
+                        resulttt.putString("bundleKeyA", dbnum);
+                        getParentFragmentManager().setFragmentResult("requestKeyA", resulttt);
+
+
+                        @SuppressLint("MissingPermission") Task<Location> l = fusedLocationClient.getCurrentLocation(PRIORITY_BALANCED_POWER_ACCURACY, token)
+                                .addOnSuccessListener(requireActivity(), new OnSuccessListener<Location>() {
+                                    @Override
+                                    public void onSuccess(Location location) {
+                                        if (location != null) {
+//                                    DatabaseReference lRef = database.getReference("Info/Location");
+                                            lstring = location.toString();
+//                                    lRef.setValue(lstring);
+                                            newLocRef = database.getReference("users/-NR00h0zLo7KfJoFP7M6/loc/" + databasenumber);
+                                            newLocRef.setValue(lstring);
+//                                            DatabaseReference locRef = database.getReference("users/" + postId + "/loc");
+//                                            locRef.setValue(lstring);
+                                        }
+                                        else{
+//                                    DatabaseReference lRef = database.getReference("Info/Location");
+                                            lstring = "null";
+//                                    lRef.setValue(lstring);
+                                            newLocRef = database.getReference("users/-NR00h0zLo7KfJoFP7M6/loc/" + databasenumber);
+                                            newLocRef.setValue(lstring);
+//                                            DatabaseReference locRef = database.getReference("users/" + postId + "/loc");
+//                                            locRef.setValue(lstring);
+                                        }
+                                    }
+                                });
+
+
+
+
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        System.out.println("The read failed: " + error.getCode());
+                    }
+                });
+
+//                DatabaseReference mRef = database.getReference("Info/Mood");
+
+//                mRef.setValue(m);
+
+//                DatabaseReference tRef = database.getReference("Info/Time");
+
+//                tRef.setValue(tstring);
 
                 newPostId = postId;
                 Bundle result = new Bundle();
@@ -186,10 +230,6 @@ public class SecondFragment extends Fragment {
 
 
 
-
-                //task.isSuccessful
-
-                //LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
             }
         }
     );
@@ -211,14 +251,14 @@ public class SecondFragment extends Fragment {
             }
         );
     }
-//        binding.buttonSecond.setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this)
-//                .navigate(R.id.action_SecondFragment_to_FourthFragment));
-//        m = binding.buttonSecond.getText().toString().trim();
-//        mRef.setValue(m);
-//        binding.buttonSecondAlt.setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this)
-//                .navigate(R.id.action_SecondFragment_to_FourthFragment));
-//        n = binding.buttonSecondAlt.getText().toString().trim();
-//        mRef.setValue(n);
+
+    public void setnumber(long n) {
+        this.dbnumber = n;
+    }
+
+    public long getnumber() {
+        return dbnumber;
+    }
 
     @Override
     public void onDestroyView() {
@@ -227,3 +267,26 @@ public class SecondFragment extends Fragment {
     }
 
 }
+
+
+
+//        private FusedLocationProviderClient fusedLocationClient;
+//        @Override
+//        protected void onCreate(Bundle savedInstanceState) {
+//            fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+//        }
+
+//task.isSuccessful
+
+//LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+
+
+//        binding.buttonSecond.setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this)
+//                .navigate(R.id.action_SecondFragment_to_FourthFragment));
+//        m = binding.buttonSecond.getText().toString().trim();
+//        mRef.setValue(m);
+//        binding.buttonSecondAlt.setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this)
+//                .navigate(R.id.action_SecondFragment_to_FourthFragment));
+//        n = binding.buttonSecondAlt.getText().toString().trim();
+//        mRef.setValue(n);

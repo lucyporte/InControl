@@ -61,14 +61,18 @@ public class SeventhFragment extends Fragment {
         dataRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String getloc = snapshot.child(myPostId+"/loc").getValue(String.class);
-                String gettime = snapshot.child(myPostId+"/time").getValue(String.class);
-                String getmood = snapshot.child(myPostId+"/mood").getValue(String.class);
-                String getnote = snapshot.child(myPostId+"/note").getValue(String.class);
-                String bigstring = getloc + "\n" + gettime + "\n" + getmood + "\n" + getnote;
-                binding.textviewSeventh.setText(bigstring);
+                long moodcount = snapshot.child("-NR00h0zLo7KfJoFP7M6/mood").getChildrenCount();
+                String a = "Data:\n\n";
+                for (long i = moodcount; i-- > moodcount-3;) {
+                    String getloc = snapshot.child("-NR00h0zLo7KfJoFP7M6/loc/" + i).getValue(String.class);
+                    String gettime = snapshot.child("-NR00h0zLo7KfJoFP7M6/time/" + i).getValue(String.class);
+                    String getmood = snapshot.child("-NR00h0zLo7KfJoFP7M6/mood/" + i).getValue(String.class);
+                    String getnote = snapshot.child("-NR00h0zLo7KfJoFP7M6/note/" + i).getValue(String.class);
+                    a = a + getloc + " " + gettime + " " + getmood + " " + getnote + "\n\n";
+//                String bigstring = getloc + "\n" + gettime + "\n" + getmood + "\n" + getnote;
+                }
+                binding.textviewSeventh.setText(a);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 System.out.println("The read failed: " + error.getCode());

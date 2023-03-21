@@ -29,12 +29,6 @@ public class FifthFragment extends Fragment {
     public String strpass;
     public String postId;
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-//    }
-
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -43,13 +37,6 @@ public class FifthFragment extends Fragment {
 
         binding = FragmentFifthBinding.inflate(inflater, container, false);
         return binding.getRoot();
-        //super.onCreate(savedInstanceState);
-        //setContentView(R.layout.fragment_fifth);
-        //setContentView(R.layout.fragment_fifth)
-        //edittext_fifth  = (EditText) findViewById(R.id.edittext_fifth);
-        //edittext_fifth = (EditText) text_fifthEdt.findViewById(R.id.edittext_fifth);
-        //text_fifthEdt = (EditText) findViewById(R.id.edittext_fifth);
-        //text_fifthEdt = text_fifthEdt.findViewById(this.edittext_fifth);
 
     }
 
@@ -63,14 +50,14 @@ public class FifthFragment extends Fragment {
                         .navigate(R.id.action_fifthFragment_to_eigthFragment);
                 // Write a message to the database
                 FirebaseDatabase database = FirebaseDatabase.getInstance("https://in-control-b3e93-default-rtdb.europe-west1.firebasedatabase.app/");
-                DatabaseReference myRef = database.getReference("Info");
-                myRef.setValue("Info");
-                DatabaseReference uRef = database.getReference("Info/Username");
-                DatabaseReference pRef = database.getReference("Info/Password");
+//                DatabaseReference myRef = database.getReference("Info");
+//                myRef.setValue("Info");
+//                DatabaseReference uRef = database.getReference("Info/Username");
+//                DatabaseReference pRef = database.getReference("Info/Password");
                 s = binding.edittextFifth.getText().toString().trim();
                 strpass = binding.edittextFifthAlt.getText().toString().trim();
-                uRef.setValue(s);
-                pRef.setValue(strpass);
+//                uRef.setValue(s);
+//                pRef.setValue(strpass);
 
                 DatabaseReference usersRef = database.getReference("users");
                 DatabaseReference pushRef = usersRef.push();
@@ -85,16 +72,36 @@ public class FifthFragment extends Fragment {
                 result.putString("bundleKey", postId);
                 getParentFragmentManager().setFragmentResult("requestKey", result);
 
-
-                //s = edittext_fifth.getText().toString().trim();
-
-                //String name = editTextName.getText().toString().trim();
-                //String id = databaseArtists.push().getKey();
-                //databaseArtists.child(id).setValue(artist);
-
-                //Attempt to invoke virtual method 'android.text.Editable android.widget.EditText.getText()'
-                // on a null object reference
             }
         });
     }
 }
+
+
+
+
+
+
+
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_main);
+//    }
+
+//super.onCreate(savedInstanceState);
+//setContentView(R.layout.fragment_fifth);
+//setContentView(R.layout.fragment_fifth)
+//edittext_fifth  = (EditText) findViewById(R.id.edittext_fifth);
+//edittext_fifth = (EditText) text_fifthEdt.findViewById(R.id.edittext_fifth);
+//text_fifthEdt = (EditText) findViewById(R.id.edittext_fifth);
+//text_fifthEdt = text_fifthEdt.findViewById(this.edittext_fifth);
+
+//s = edittext_fifth.getText().toString().trim();
+
+//String name = editTextName.getText().toString().trim();
+//String id = databaseArtists.push().getKey();
+//databaseArtists.child(id).setValue(artist);
+
+//Attempt to invoke virtual method 'android.text.Editable android.widget.EditText.getText()'
+// on a null object reference
