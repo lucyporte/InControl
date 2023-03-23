@@ -69,6 +69,9 @@
         <action
             android:id="@+id/action_fifthFragment_to_eigthFragment"
             app:destination="@id/eigthFragment" />
+        <action
+            android:id="@+id/action_fifthFragment_to_sixthFragment"
+            app:destination="@id/sixthFragment" />
     </fragment>
 
     <activity
@@ -81,14 +84,11 @@
         android:name="com.example.incontrol.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
-    <fragment
-        android:id="@+id/sixthFragment"
-        android:name="com.example.incontrol.SixthFragment"
-        android:label="SixthFragment" >
+
 <!--        <action-->
 <!--            android:id="@+id/action_sixthFragment_to_SecondFragment"-->
 <!--            app:destination="@id/SecondFragment" />-->
-    </fragment>
+
     <fragment
         android:id="@+id/seventhFragment"
         android:name="com.example.incontrol.SeventhFragment"
@@ -128,6 +128,17 @@
             app:destination="@id/fifthFragment"
             app:enterAnim="@anim/nav_default_pop_enter_anim"
             app:popEnterAnim="@animator/nav_default_pop_enter_anim" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/sixthFragment"
+        android:name="com.example.incontrol.SixthFragment"
+        android:label="fragment_sixth"
+        tools:layout="@layout/fragment_sixth">
+    <action
+        android:id="@+id/action_sixthFragment_to_eigthFragment"
+        app:destination="@id/eigthFragment" />
     </fragment>
 
     <fragment

@@ -1,38 +1,24 @@
 package com.example.incontrol;
 
-//import static androidx.core.app.AppOpsManagerCompat.Api29Impl.getSystemService;
-
 import static android.content.Context.USAGE_STATS_SERVICE;
-import static android.os.Parcelable.CONTENTS_FILE_DESCRIPTOR;
-import static android.os.Parcelable.PARCELABLE_WRITE_RETURN_VALUE;
-import static androidx.core.app.AppOpsManagerCompat.*;
 import static com.google.android.gms.location.LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY;
 
-import androidx.appcompat.*;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
-import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-//import android.app.AppCompatActivity;
-import android.telephony.TelephonyManager;
-import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.core.app.*;
-import androidx.core.content.*;
 
 import com.example.incontrol.databinding.FragmentSecondBinding;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -47,22 +33,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.ValueEventListener;
-import android.app.AppOpsManager;
 import android.app.usage.UsageStats;
 import android.app.usage.UsageStatsManager;
 
-//import android.support.annotation.NonNull;
-import android.support.v4.app.*;
-//import hugo.weaving.DebugLog;
-//import AppOpsManagerCompat.getSystemService;
-//import getSystemService;
 import android.app.ActivityManager.RunningAppProcessInfo;
-import android.os.Parcel;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -74,38 +51,20 @@ public class SecondFragment extends Fragment {
     public FusedLocationProviderClient fusedLocationClient;
     public String lstring;
     public CancellationToken token;
-    public Task<Location> l;
-    //public List<ActivityManager.RunningAppProcessInfo> getRunningAppProcesses;
-    //public ActivityManager am;
     public String a;
-    public ActivityManager.RunningAppProcessInfo amra;
-    Context context = getActivity();
     public String postId;
     public String newPostId;
-    public long databasenumber;
-    public DatabaseReference newMoodRef;
-    public DatabaseReference newTimeRef;
-    public DatabaseReference newLocRef;
     public long dbnumber;
-    public String dbnum;
     public DatabaseReference moodRef;
     public DatabaseReference timeRef;
     public DatabaseReference locRef;
     public String userloc;
     public String usertime;
-    public static final Parcelable.Creator<ActivityManager.RecentTaskInfo> CREATOR = null;
-    //public List<ActivityManager.RunningAppProcessInfo> getRunningAppProcesses ();
     public ActivityManager.RunningAppProcessInfo amrap;
-    public int thingy;
     public DatabaseReference appsRef;
-    public Parcel parc;
     public List<UsageStats> appList;
-    public DatabaseReference mapRef;
     public SortedMap<String, UsageStats> mySortedMap;
     public String myString;
-    public int i;
-    public int myInt;
-    public DatabaseReference myAppsRef;
 
     @Override
     public View onCreateView(
@@ -132,9 +91,6 @@ public class SecondFragment extends Fragment {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
 
-//        List<ActivityManager.RunningAppProcessInfo> thingy = new List<RunningAppProcessInfo>() {
-//        }
-        //startActivity(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS));
         startActivity(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS));
         UsageStatsManager usm = (UsageStatsManager) this.requireContext().getSystemService(USAGE_STATS_SERVICE);
         appList = usm.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, System.currentTimeMillis() - 1000 * 60, System.currentTimeMillis());
@@ -153,33 +109,11 @@ public class SecondFragment extends Fragment {
 //            myAppsRef.setValue(entry.getValue());
 //            myInt ++;
 
-
         //UsageStatsManager usm = null;
         //if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
         //    usm = (UsageStatsManager) this.requireContext().getSystemService(USAGE_STATS_SERVICE); //Activity
         //}
 
-//        ActivityManager.RunningAppProcessInfo amrap = new ActivityManager.RunningAppProcessInfo();
-//        //parc = new Parcel();
-//        parc = Parcel.obtain();
-//        amrap.writeToParcel(parc, PARCELABLE_WRITE_RETURN_VALUE);
-//        thingy = amrap.describeContents();
-
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND,
-//                WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
-
-//        ActivityManager am = (ActivityManager) context.getSystemService(context.ACTIVITY_SERVICE);
-//        List<ActivityManager.RunningAppProcessInfo> taskInfo = am.getRunningAppProcesses();
-
-//        ActivityManager am = (ActivityManager) this;
-//        List<RunningAppProcessInfo> info = am.getRunningAppProcesses();
-
-        //val mActivityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-        //val mRecentTasks: List<ActivityManager.RunningTaskInfo> = Objects.requireNonNull(mActivityManager).getRunningTasks(Int.MAX_VALUE)
-
-        //ActivityManager am = null;
-        //List<ActivityManager.RunningAppProcessInfo> appProcesses = am.getRunningAppProcesses(); // if null idk
-        //List<RunningAppProcessInfo> getRunningAppProcesses = SecondFragment.this.getRunningAppProcesses;
 
         binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -198,26 +132,13 @@ public class SecondFragment extends Fragment {
                     userloc = binding.edittextSecond.getText().toString().trim();
                     usertime = binding.edittextSecondAlt.getText().toString().trim();
 
-
-//                Parcelable.Creator<RunningAppProcessInfo> creator = RunningAppProcessInfo.CREATOR;
-//                Parcel parcel = ;
-//                CREATOR.createFromParcel(parcel);
-
                     usersRef.addListenerForSingleValueEvent(new ValueEventListener() { //Close these?
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             long getchildrencount = snapshot.child(postId + "/mood").getChildrenCount();
                             long databasenumber = getchildrencount + 1;
-                            newMoodRef = database.getReference("users/-NR00h0zLo7KfJoFP7M6/mood/" + databasenumber);
                             moodRef = database.getReference("users/" + postId + "/mood/" + databasenumber);
                             moodRef.setValue(m);
-                            newMoodRef.setValue(m);
-
-                            newTimeRef = database.getReference("users/-NR00h0zLo7KfJoFP7M6/time/" + databasenumber);
-                            newTimeRef.setValue(tstring);
-
-                            //appRef = database.getReference("users/" + postId + "/apps/" + databasenumber);
-                            //appRef.setValue(appList);
 
                             appsRef = database.getReference("users/" + postId + "/apps/" + databasenumber);
                             //appsRef.setValue(appList);
@@ -243,8 +164,6 @@ public class SecondFragment extends Fragment {
                                         public void onSuccess(Location location) {
                                             if (location != null) {
                                                 lstring = location.toString();
-                                                newLocRef = database.getReference("users/-NR00h0zLo7KfJoFP7M6/loc/" + databasenumber);
-                                                newLocRef.setValue(lstring);
                                                 locRef = database.getReference("users/" + postId + "/loc/" + databasenumber);
                                                 if (!(userloc.equals(""))) {
                                                     locRef.setValue(userloc);
@@ -253,8 +172,6 @@ public class SecondFragment extends Fragment {
                                                 }
                                             } else {
                                                 lstring = "null";
-                                                newLocRef = database.getReference("users/-NR00h0zLo7KfJoFP7M6/loc/" + databasenumber);
-                                                newLocRef.setValue(lstring);
                                                 locRef = database.getReference("users/" + postId + "/loc/" + databasenumber);
                                                 if (!(userloc.equals(""))) {
                                                     locRef.setValue(userloc);
@@ -280,44 +197,10 @@ public class SecondFragment extends Fragment {
                     result.putString("bundleKey2", newPostId);
                     getParentFragmentManager().setFragmentResult("requestKey2", result);
 
-//                DatabaseReference aRef = database.getReference("Info/Apps");
-//                a = taskInfo.toString();
-//                if (a != null){
-//                    aRef.setValue(a);
-//                }
-//                else{
-//                    aRef.setValue("null");
-//                }
 
-
-                                                        //List<AndroidAppProcess> processes = AndroidProcesses.getRunningAppProcesses();
-
-                                                        //List<ActivityManager.RunningAppProcessInfo> processes = AndroidProcesses.getRunningAppProcessInfo(context);
-
-                                                        // ActivityManager.RunningAppProcessInfo am = new ActivityManager.RunningAppProcessInfo();
-                                                        //List<ActivityManager.RunningAppProcessInfo> appProcesses = new List<ActivityManager.RunningAppProcessInfo>() {
-                                                        //}.getRunningAppProcesses();
-
-
-//                ActivityManager.getRunningAppProcesses
-//                        .RunningTaskInfo
-//                        .getRunningTasks
-//                        .toString
-//                        a = binding.buttonSecond.getText().toString().trim();
-//                mRef.setValue(a);
-//
-//                am.getRunningAppProcesses;
-//                List<ActivityManager.RunningAppProcessInfo> getRunningAppProcesses = new List<ActivityManager.RunningAppProcessInfo>() {
-//                };
-//                getRunningAppProcesses = am.getRunningAppProcesses();
-//                ActivityManager.RunningAppProcessInfo.getRunningAppProcesses;
-//                ActivityManager am;
-//                List<ActivityManager.RunningAppProcessInfo> runningAppProcesses = am.getRunningAppProcesses();
-
-
-                                                    }
-                                                }
-        );
+            }
+        }
+);
 
         binding.buttonSecondAlt.setOnClickListener(new View.OnClickListener() {
             @Override

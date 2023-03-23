@@ -128,6 +128,16 @@ public class FifthFragment extends Fragment {
         });
     }
     });
+
+                binding.buttonFifthAltAlt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(FifthFragment.this)
+                        .navigate(R.id.action_fifthFragment_to_sixthFragment);
+            }
+        }
+        );
+
     }
 
     public void setVal(String s) {

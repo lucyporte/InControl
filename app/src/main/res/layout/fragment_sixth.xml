@@ -4,74 +4,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/_2"
     tools:context=".SixthFragment">
 
     <TextView
         android:id="@+id/textview_sixth"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:text="Username:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:layout_width="314dp"
+        android:layout_height="180dp"
+        android:text="Enter the patient username and access key here"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintBottom_toTopOf="@id/button_sixth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Username:" />
+        tools:text="Enter the patient username and access key here" />
+
 
     <EditText
         android:id="@+id/edittext_sixth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="type your name here"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="20dp"
+        android:hint="Type the username here"
         android:inputType="textPersonName|textCapWords"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_sixth"/>
+        app:layout_constraintTop_toBottomOf="@id/textview_sixth" />
 
-    <TextView
-        android:id="@+id/textview_sixth_alt"
-        android:layout_width="314dp"
-        android:layout_height="100dp"
-        android:text="Password:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        app:layout_constraintBottom_toTopOf="@id/button_sixth"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edittext_sixth"
-        tools:text="Password:" />
 
     <EditText
         android:id="@+id/edittext_sixth_alt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="type your password here"
-        android:layout_marginTop="10dp"
+        android:hint="Type the access code here"
         android:inputType="textPersonName|textCapWords"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_sixth_alt"/>
+        app:layout_constraintTop_toBottomOf="@id/edittext_sixth"
+        tools:layout_editor_absoluteX="75dp"
+        app:layout_constraintStart_toStartOf = "@id/edittext_sixth"
+        />
 
     <Button
         android:id="@+id/button_sixth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/log"
+        android:text="@string/okay"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edittext_sixth_alt"
+        app:layout_constraintTop_toBottomOf="@id/textview_sixth"
         app:layout_constraintVertical_bias="0.24"
-        tools:text="Login or Register" />
+        tools:text="Okay" />
 
     <Button
         android:id="@+id/button_sixth_alt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/previous"
+        android:text="@string/back"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_sixth"
-        tools:text="Previous" />
+        tools:text="Back" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

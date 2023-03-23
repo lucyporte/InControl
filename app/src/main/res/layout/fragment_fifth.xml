@@ -74,4 +74,15 @@
         app:layout_constraintTop_toBottomOf="@id/button_fifth"
         tools:text="Previous" />
 
+    <Button
+        android:id="@+id/button_fifth_alt_alt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="I am a therapist"
+        app:layout_constraintStart_toStartOf="@id/edittext_fifth"
+        app:layout_constraintTop_toBottomOf="@id/button_fifth_alt"
+        app:layout_constraintEnd_toEndOf="@id/edittext_fifth"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:text="I am a therapist" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
