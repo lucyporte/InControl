@@ -19,6 +19,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class SeventhFragment extends Fragment {
@@ -30,6 +32,7 @@ public class SeventhFragment extends Fragment {
     public DataSnapshot datasnap;
     public String myPostId;
     public String getname;
+    public List<String> myList;
 
     @Override
     public View onCreateView(
@@ -58,17 +61,33 @@ public class SeventhFragment extends Fragment {
         //Try to add database stuff here.
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://in-control-b3e93-default-rtdb.europe-west1.firebasedatabase.app/");
         DatabaseReference dataRef = database.getReference("users");
+        myList = new ArrayList<>();
         dataRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 long moodcount = snapshot.child(myPostId + "/mood").getChildrenCount();
+                long appcount = snapshot.child(myPostId + "/apps/" + moodcount).getChildrenCount();
                 String a = "Data:\n\n";
                 for (long i = moodcount; i-- > moodcount-3;) {
                     String getloc = snapshot.child(myPostId + "/loc/" + i).getValue(String.class);
                     String gettime = snapshot.child(myPostId + "/time/" + i).getValue(String.class);
                     String getmood = snapshot.child(myPostId + "/mood/" + i).getValue(String.class);
                     String getnote = snapshot.child(myPostId + "/note/" + i).getValue(String.class);
-                    a = a + getloc + " " + gettime + " " + getmood + " " + getnote + "\n\n";
+                    String b = "";
+                    for (DataSnapshot ds: snapshot.child(myPostId + "/apps/" + i).getChildren()){
+                        myList.add(ds.child("packageName").getValue().toString());
+                        myList.add(ds.child("totalTimeInForeground").getValue().toString());
+                    }
+                    for (int k = myList.size(); k-- > myList.size() - 6;) {
+                        b = b + myList.get(k);
+                    }
+//                    for (long j = appcount; j-- > appcount-3;) {
+//                        String getapp = snapshot.child(myPostId + "/apps/" + i + "/" + j + "/totalTimeInForeground").getValue() + "";
+//                        String getpackage = snapshot.child(myPostId + "/apps/" + i + "/" + j + "/packageName").getValue(String.class);
+//                        b = b + getapp + " " + getpackage + " ";
+//                    }
+                    String getapps = snapshot.child(myPostId + "/apps/ " + i).getValue(String.class);
+                    a = a + getloc + " " + gettime + " " + getmood + " " + getnote + b + "\n\n";
 //                String bigstring = getloc + "\n" + gettime + "\n" + getmood + "\n" + getnote;
                 }
                 binding.textviewSeventh.setText(a);
