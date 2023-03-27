@@ -42,24 +42,19 @@ public class FourthFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getParentFragmentManager().setFragmentResultListener("requestKey2", this, new FragmentResultListener() {
+        getParentFragmentManager().setFragmentResultListener("requestKey3", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
-                // We use a String here, but any type that can be put in a Bundle is supported
-                String result = bundle.getString("bundleKey2");
+                String result = bundle.getString("bundleKey3");
                 newPostId = result;
-                // Do something with the result
             }
         });
 
         getParentFragmentManager().setFragmentResultListener("requestKeyA", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
-                // We use a String here, but any type that can be put in a Bundle is supported
                 String resulttt = bundle.getString("bundleKeyA");
                 dbnumber = resulttt;
-//                dbnum = valueOf(dbnumber);
-                // Do something with the result
             }
         });
 
@@ -83,9 +78,9 @@ public class FourthFragment extends Fragment {
                    newNoteRef.setValue(n);
 
                    otherPostId = newPostId;
-                   Bundle result = new Bundle();
-                   result.putString("bundleKey3", otherPostId);
-                   getParentFragmentManager().setFragmentResult("requestKey3", result);
+                   Bundle result4 = new Bundle();
+                   result4.putString("bundleKey4", otherPostId);
+                   getParentFragmentManager().setFragmentResult("requestKey4", result4);
                }
            }
         );

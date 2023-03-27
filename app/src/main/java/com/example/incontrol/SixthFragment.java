@@ -24,7 +24,7 @@ public class SixthFragment extends Fragment {
     public String uname;
     public String value;
     public String postId;
-    public Boolean isTherapist;
+    public boolean isTherapist;
 
     @Override
     public View onCreateView(
@@ -67,14 +67,14 @@ public class SixthFragment extends Fragment {
                         }
 
                         postId = getVal();
-                        Bundle result = new Bundle();
-                        result.putString("bundleKeyyy", postId);
-                        getParentFragmentManager().setFragmentResult("requestKeyyy", result);
+                        Bundle result6 = new Bundle();
+                        result6.putString("bundleKey6", postId);
+                        getParentFragmentManager().setFragmentResult("requestKey6", result6);
 
                         isTherapist = true;
-                        Bundle therresult = new Bundle();
-                        therresult.putBoolean("therbundleKey", isTherapist);
-                        getParentFragmentManager().setFragmentResult("therrequestKey", therresult);
+                        Bundle resultB = new Bundle();
+                        resultB.putBoolean("bundleKeyB", isTherapist);
+                        getParentFragmentManager().setFragmentResult("requestKeyB", resultB);
 
 
                     }

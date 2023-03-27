@@ -26,14 +26,9 @@ import java.util.Objects;
 public class FifthFragment extends Fragment {
 
     public FragmentFifthBinding binding;
-    public EditText nametext;
-    public EditText passtext;
-    public TextView t;
-    public Button b;
     public String uname = "Hi";
     public String pword;
     public String postId;
-    public String userId;
     public String value;
 
     @Override
@@ -86,7 +81,6 @@ public class FifthFragment extends Fragment {
                         }
 
                         postId = getVal();
-
                         Bundle result = new Bundle();
                         result.putString("bundleKey", postId);
                         getParentFragmentManager().setFragmentResult("requestKey", result);
@@ -129,7 +123,7 @@ public class FifthFragment extends Fragment {
     }
     });
 
-                binding.buttonFifthAltAlt.setOnClickListener(new View.OnClickListener() {
+                binding.buttonFifthAltAlt.setOnClickListener(new View.OnClickListener() { //Causing problems?
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(FifthFragment.this)

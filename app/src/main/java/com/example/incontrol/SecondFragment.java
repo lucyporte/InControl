@@ -82,10 +82,8 @@ public class SecondFragment extends Fragment {
         getParentFragmentManager().setFragmentResultListener("requestKey", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
-                // We use a String here, but any type that can be put in a Bundle is supported
                 String result = bundle.getString("bundleKey");
                 postId = result;
-                // Do something with the result
             }
         });
 
@@ -193,9 +191,9 @@ public class SecondFragment extends Fragment {
 
 
                     newPostId = postId;
-                    Bundle result = new Bundle();
-                    result.putString("bundleKey2", newPostId);
-                    getParentFragmentManager().setFragmentResult("requestKey2", result);
+                    Bundle result3 = new Bundle();
+                    result3.putString("bundleKey3", newPostId);
+                    getParentFragmentManager().setFragmentResult("requestKey3", result3);
 
 
             }

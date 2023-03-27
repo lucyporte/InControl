@@ -17,8 +17,8 @@ import com.example.incontrol.databinding.FragmentThirdBinding;
 public class EigthFragment extends Fragment {
 
     private FragmentEigthBinding binding;
-    public Boolean isth;
-    public String postIdyy;
+    public boolean isther = false;
+    public String postId;
 
     @Override
     public View onCreateView(
@@ -36,23 +36,11 @@ public class EigthFragment extends Fragment {
 
 //        EACH ONE ONLY USED ONCE!
 
-        getParentFragmentManager().setFragmentResultListener("therrequestkey", this, new FragmentResultListener() {
+        getParentFragmentManager().setFragmentResultListener("requestKey", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
-                // We use a String here, but any type that can be put in a Bundle is supported
-                Boolean thresult = bundle.getBoolean("therbundlekey");
-                isth = thresult;
-                // Do something with the result
-            }
-        });
-
-        getParentFragmentManager().setFragmentResultListener("requestKeyyy", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
-                // We use a String here, but any type that can be put in a Bundle is supported
-                String resultyy = bundle.getString("bundleKeyyy");
-                postIdyy = resultyy;
-                // Do something with the result
+                String result = bundle.getString("bundleKey");
+                postId = result;
             }
         });
 
@@ -61,6 +49,9 @@ public class EigthFragment extends Fragment {
             public void onClick(View view) {
                 NavHostFragment.findNavController(EigthFragment.this)
                         .navigate(R.id.action_eigthFragment_to_secondFragment);
+                Bundle result2 = new Bundle();
+                result2.putString("bundleKey2", postId);
+                getParentFragmentManager().setFragmentResult("requestKey2", result2);
             }
         });
 
@@ -90,5 +81,38 @@ public class EigthFragment extends Fragment {
             }
         });
 
+
+//        Bundle result7th = new Bundle();
+//        result7th.putString("bundleKey7th", postId);
+//        getParentFragmentManager().setFragmentResult("requestKey7th", result7th);
+//
+//        Bundle result9th = new Bundle();
+//        result9th.putString("bundleKey9th", postId);
+//        getParentFragmentManager().setFragmentResult("requestKey9th", result9th);
+
+//        Bundle resultC = new Bundle();
+//        resultC.putBoolean("bundleKeyC", isther);
+//        getParentFragmentManager().setFragmentResult("requestKeyC", resultC);
+
+//        Bundle therresult9th = new Bundle();
+//        therresult9th.putBoolean("therbundleKey9th", isther);
+//        getParentFragmentManager().setFragmentResult("therrequestKey9th", therresult9th);
+
+    }
+
+    public void setTher(boolean t) {
+        this.isther = t;
+    }
+
+    public boolean getTher() {
+        return isther;
+    }
+
+    public void setPost(String s){
+        this.postId = s;
+    }
+
+    public String getPost(){
+        return postId;
     }
 }

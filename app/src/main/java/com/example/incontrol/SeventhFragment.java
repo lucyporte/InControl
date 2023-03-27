@@ -33,6 +33,7 @@ public class SeventhFragment extends Fragment {
     public String myPostId;
     public String getname;
     public List<String> myList;
+    public String postId;
 
     @Override
     public View onCreateView(
@@ -48,13 +49,11 @@ public class SeventhFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getParentFragmentManager().setFragmentResultListener("requestKey3", this, new FragmentResultListener() {
+        getParentFragmentManager().setFragmentResultListener("requestKey4", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
-                // We use a String here, but any type that can be put in a Bundle is supported
-                String result = bundle.getString("bundleKey3");
+                String result = bundle.getString("bundleKey4");
                 myPostId = result;
-                // Do something with the result
             }
         });
 
@@ -130,6 +129,11 @@ public class SeventhFragment extends Fragment {
             public void onClick(View view) {
                 NavHostFragment.findNavController(SeventhFragment.this)
                         .navigate(R.id.action_seventhFragment_to_eigthFragment);
+
+                postId = myPostId;
+                Bundle result5 = new Bundle();
+                result5.putString("bundleKey5", postId);
+                getParentFragmentManager().setFragmentResult("requestKey5", result5);
             }
         });
     }
