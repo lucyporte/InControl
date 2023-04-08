@@ -33,13 +33,13 @@ public class NinthFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getParentFragmentManager().setFragmentResultListener("requestKey5", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
-                String result = bundle.getString("bundleKey5");
-                thePostId = result;
-            }
-        });
+//        getParentFragmentManager().setFragmentResultListener("requestKey5", this, new FragmentResultListener() {
+//            @Override
+//            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
+//                String result = bundle.getString("bundleKey5");
+//                thePostId = result;
+//            }
+//        });
 
         binding.buttonNinth.setOnClickListener(new View.OnClickListener() {
             @Override

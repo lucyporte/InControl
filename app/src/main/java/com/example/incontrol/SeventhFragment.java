@@ -49,10 +49,10 @@ public class SeventhFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getParentFragmentManager().setFragmentResultListener("requestKey4", this, new FragmentResultListener() {
+        getParentFragmentManager().setFragmentResultListener("requestKey3", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
-                String result = bundle.getString("bundleKey4");
+                String result = bundle.getString("bundleKey3");
                 myPostId = result;
             }
         });
@@ -67,7 +67,7 @@ public class SeventhFragment extends Fragment {
                 long moodcount = snapshot.child(myPostId + "/mood").getChildrenCount();
                 long appcount = snapshot.child(myPostId + "/apps/" + moodcount).getChildrenCount();
                 String a = "Data:\n\n";
-                for (long i = moodcount; i-- > moodcount-3;) {
+                for (long i = moodcount+1; i-- > moodcount-2;) { //Dont know why this works
                     String getloc = snapshot.child(myPostId + "/loc/" + i).getValue(String.class);
                     String gettime = snapshot.child(myPostId + "/time/" + i).getValue(String.class);
                     String getmood = snapshot.child(myPostId + "/mood/" + i).getValue(String.class);
@@ -130,10 +130,10 @@ public class SeventhFragment extends Fragment {
                 NavHostFragment.findNavController(SeventhFragment.this)
                         .navigate(R.id.action_seventhFragment_to_eigthFragment);
 
-                postId = myPostId;
-                Bundle result5 = new Bundle();
-                result5.putString("bundleKey5", postId);
-                getParentFragmentManager().setFragmentResult("requestKey5", result5);
+//                postId = myPostId;
+//                Bundle result5 = new Bundle();
+//                result5.putString("bundleKey5", postId);
+//                getParentFragmentManager().setFragmentResult("requestKey5", result5);
             }
         });
     }

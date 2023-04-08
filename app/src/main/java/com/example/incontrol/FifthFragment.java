@@ -123,14 +123,15 @@ public class FifthFragment extends Fragment {
     }
     });
 
-                binding.buttonFifthAltAlt.setOnClickListener(new View.OnClickListener() { //Causing problems?
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(FifthFragment.this)
-                        .navigate(R.id.action_fifthFragment_to_sixthFragment);
-            }
-        }
-        );
+                //Causing problems?
+//                binding.buttonFifthAltAlt.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                NavHostFragment.findNavController(FifthFragment.this)
+//                        .navigate(R.id.action_fifthFragment_to_sixthFragment);
+//            }
+//        }
+//        );
 
     }
 

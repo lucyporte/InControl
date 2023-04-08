@@ -42,10 +42,10 @@ public class FourthFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getParentFragmentManager().setFragmentResultListener("requestKey3", this, new FragmentResultListener() {
+        getParentFragmentManager().setFragmentResultListener("requestKey2", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
-                String result = bundle.getString("bundleKey3");
+                String result = bundle.getString("bundleKey2");
                 newPostId = result;
             }
         });
@@ -78,9 +78,9 @@ public class FourthFragment extends Fragment {
                    newNoteRef.setValue(n);
 
                    otherPostId = newPostId;
-                   Bundle result4 = new Bundle();
-                   result4.putString("bundleKey4", otherPostId);
-                   getParentFragmentManager().setFragmentResult("requestKey4", result4);
+                   Bundle result3 = new Bundle();
+                   result3.putString("bundleKey3", otherPostId);
+                   getParentFragmentManager().setFragmentResult("requestKey3", result3);
                }
            }
         );

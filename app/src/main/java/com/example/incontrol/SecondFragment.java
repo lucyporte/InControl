@@ -191,9 +191,9 @@ public class SecondFragment extends Fragment {
 
 
                     newPostId = postId;
-                    Bundle result3 = new Bundle();
-                    result3.putString("bundleKey3", newPostId);
-                    getParentFragmentManager().setFragmentResult("requestKey3", result3);
+                    Bundle result2 = new Bundle();
+                    result2.putString("bundleKey2", newPostId);
+                    getParentFragmentManager().setFragmentResult("requestKey2", result2);
 
 
             }
