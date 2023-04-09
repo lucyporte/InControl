@@ -43,27 +43,87 @@ import android.app.ActivityManager.RunningAppProcessInfo;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+/**
+ * The type Second fragment.
+ */
 public class SecondFragment extends Fragment {
 
     private FragmentSecondBinding binding;
+    /**
+     * The M.
+     */
     public String m;
+    /**
+     * The Tstring.
+     */
     public String tstring;
+    /**
+     * The Fused location client.
+     */
     public FusedLocationProviderClient fusedLocationClient;
+    /**
+     * The Lstring.
+     */
     public String lstring;
+    /**
+     * The Token.
+     */
     public CancellationToken token;
+    /**
+     * The A.
+     */
     public String a;
+    /**
+     * The Post id.
+     */
     public String postId;
+    /**
+     * The New post id.
+     */
     public String newPostId;
+    /**
+     * The Dbnumber.
+     */
     public long dbnumber;
+    /**
+     * The Mood ref.
+     */
     public DatabaseReference moodRef;
+    /**
+     * The Time ref.
+     */
     public DatabaseReference timeRef;
+    /**
+     * The Loc ref.
+     */
     public DatabaseReference locRef;
+    /**
+     * The Userloc.
+     */
     public String userloc;
+    /**
+     * The Usertime.
+     */
     public String usertime;
+    /**
+     * The Amrap.
+     */
     public ActivityManager.RunningAppProcessInfo amrap;
+    /**
+     * The Apps ref.
+     */
     public DatabaseReference appsRef;
+    /**
+     * The App list.
+     */
     public List<UsageStats> appList;
+    /**
+     * The My sorted map.
+     */
     public SortedMap<String, UsageStats> mySortedMap;
+    /**
+     * The My string.
+     */
     public String myString;
 
     @Override
@@ -218,11 +278,21 @@ public class SecondFragment extends Fragment {
 
     }
 
-        public void setnumber (long n){
+    /**
+     * Setnumber.
+     *
+     * @param n the n
+     */
+    public void setnumber (long n){
             this.dbnumber = n;
         }
 
-        public long getnumber () {
+    /**
+     * Gets .
+     *
+     * @return
+     */
+    public long getnumber () {
             return dbnumber;
         }
 
@@ -232,11 +302,21 @@ public class SecondFragment extends Fragment {
             binding = null;
         }
 
-        public RunningAppProcessInfo getAamm () {
+    /**
+     * Gets aamm.
+     *
+     * @return aamm
+     */
+    public RunningAppProcessInfo getAamm () {
             return amrap;
         }
 
-        public void setAamm (RunningAppProcessInfo amrap){
+    /**
+     * Set aamm.
+     *
+     * @param amrap the amrap
+     */
+    public void setAamm (RunningAppProcessInfo amrap){
             this.amrap = amrap;
         }
 }

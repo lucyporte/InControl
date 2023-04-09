@@ -36,22 +36,22 @@ public class EigthFragment extends Fragment {
 
 //        EACH ONE ONLY USED ONCE!
 
-        getParentFragmentManager().setFragmentResultListener("requestKey", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
-                String result = bundle.getString("bundleKey");
-                postId = result;
-            }
-        });
+//        getParentFragmentManager().setFragmentResultListener("requestKey", this, new FragmentResultListener() {
+//            @Override
+//            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
+//                String result = bundle.getString("bundleKey");
+//                postId = result;
+//            }
+//        });
 
         binding.buttonEigth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(EigthFragment.this)
                         .navigate(R.id.action_eigthFragment_to_secondFragment);
-                Bundle result2 = new Bundle();
-                result2.putString("bundleKey2", postId);
-                getParentFragmentManager().setFragmentResult("requestKey2", result2);
+//                Bundle result2 = new Bundle();
+//                result2.putString("bundleKey2", postId);
+//                getParentFragmentManager().setFragmentResult("requestKey2", result2);
             }
         });
 
@@ -100,19 +100,19 @@ public class EigthFragment extends Fragment {
 
     }
 
-    public void setTher(boolean t) {
-        this.isther = t;
-    }
-
-    public boolean getTher() {
-        return isther;
-    }
-
-    public void setPost(String s){
-        this.postId = s;
-    }
-
-    public String getPost(){
-        return postId;
-    }
+//    public void setTher(boolean t) {
+//        this.isther = t;
+//    }
+//
+//    public boolean getTher() {
+//        return isther;
+//    }
+//
+//    public void setPost(String s){
+//        this.postId = s;
+//    }
+//
+//    public String getPost(){
+//        return postId;
+//    }
 }

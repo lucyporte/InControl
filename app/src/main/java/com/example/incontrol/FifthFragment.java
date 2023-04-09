@@ -23,12 +23,30 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
 
+/**
+ * The type Fifth fragment.
+ */
 public class FifthFragment extends Fragment {
 
+    /**
+     * The Binding.
+     */
     public FragmentFifthBinding binding;
+    /**
+     * The Uname.
+     */
     public String uname = "Hi";
+    /**
+     * The Pword.
+     */
     public String pword;
+    /**
+     * The Post id.
+     */
     public String postId;
+    /**
+     * The Value.
+     */
     public String value;
 
     @Override
@@ -135,10 +153,21 @@ public class FifthFragment extends Fragment {
 
     }
 
+    /**
+     * Sets val.
+     *
+     * @param s the s
+     */
     public void setVal(String s) {
         this.postId = s;
     }
 
+
+    /**
+     * Gets val.
+     *
+     * @return val
+     */
     public String getVal() {
         return postId;
     }

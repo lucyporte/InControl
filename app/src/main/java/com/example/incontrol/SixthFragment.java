@@ -18,12 +18,27 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * The type Sixth fragment.
+ */
 public class SixthFragment extends Fragment {
 
     private FragmentSixthBinding binding;
+    /**
+     * The Uname.
+     */
     public String uname;
+    /**
+     * The Value.
+     */
     public String value;
+    /**
+     * The Post id.
+     */
     public String postId;
+    /**
+     * The Is therapist.
+     */
     public boolean isTherapist;
 
     @Override
@@ -99,10 +114,20 @@ public class SixthFragment extends Fragment {
     }
 
 
+//    /**
+//     * Sets val.
+//     *
+//     * @param s the s
+//     */
 //    public void setVal(String s) {
 //        this.postId = s;
 //    }
 //
+//    /**
+//     * Gets val.
+//     *
+//     * @return the val
+//     */
 //    public String getVal() {
 //        return postId;
 //    }
