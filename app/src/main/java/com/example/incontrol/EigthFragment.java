@@ -19,6 +19,9 @@ public class EigthFragment extends Fragment {
     private FragmentEigthBinding binding;
     public boolean isther = false;
     public String postId;
+    public String isTherapist;
+
+    //Can only open each bundle once...
 
     @Override
     public View onCreateView(
@@ -36,19 +39,25 @@ public class EigthFragment extends Fragment {
 
 //        EACH ONE ONLY USED ONCE!
 
-//        getParentFragmentManager().setFragmentResultListener("requestKey", this, new FragmentResultListener() {
-//            @Override
-//            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
-//                String result = bundle.getString("bundleKey");
-//                postId = result;
-//            }
-//        });
+        getParentFragmentManager().setFragmentResultListener("requestKeyTh", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKeyTh, @NonNull Bundle bundle) {
+                String resultTher = bundle.getString("bundleKeyTh");
+                isTherapist = resultTher;
+            }
+        });
 
         binding.buttonEigth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(EigthFragment.this)
-                        .navigate(R.id.action_eigthFragment_to_secondFragment);
+                if((isTherapist != null) && isTherapist.equals("yes")){
+                    NavHostFragment.findNavController(EigthFragment.this)
+                            .navigate(R.id.action_eigthFragment_to_sixthFragment);
+                }
+                else {
+                    NavHostFragment.findNavController(EigthFragment.this)
+                            .navigate(R.id.action_eigthFragment_to_secondFragment);
+                }
 //                Bundle result2 = new Bundle();
 //                result2.putString("bundleKey2", postId);
 //                getParentFragmentManager().setFragmentResult("requestKey2", result2);
@@ -66,12 +75,16 @@ public class EigthFragment extends Fragment {
         binding.buttonEigthAltAlt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(EigthFragment.this)
-                        .navigate(R.id.action_eigthFragment_to_ninthFragment);
+                if((isTherapist != null) && isTherapist.equals("yes")){
+                    NavHostFragment.findNavController(EigthFragment.this)
+                            .navigate(R.id.action_eigthFragment_to_tenthFragment);
+                }
+                else {
+                    NavHostFragment.findNavController(EigthFragment.this)
+                            .navigate(R.id.action_eigthFragment_to_ninthFragment);
+                }
             }
         });
-
-//        Logout bundle something
 
         binding.buttonEigthAltAltAlt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +94,7 @@ public class EigthFragment extends Fragment {
             }
         });
 
+//        Logout bundle something
 
 //        Bundle result7th = new Bundle();
 //        result7th.putString("bundleKey7th", postId);

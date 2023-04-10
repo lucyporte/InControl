@@ -42,7 +42,8 @@
     <string name="mess">Messages:</string>
     <string name="username">Username:</string>
     <string name="password">Password:</string>
-    <string name="typename">Type your username here:</string>
-    <string name="typepass">Type your password here:</string>
+    <string name="typename">Type your given username here:</string>
+    <string name="typepass">Type your given password here:</string>
     <string name="home">Home</string>
+    <string name="login">Login / Register</string>
 </resources>

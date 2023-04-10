@@ -28,26 +28,17 @@ import java.util.Objects;
  */
 public class FifthFragment extends Fragment {
 
-    /**
-     * The Binding.
-     */
+    /*** The Binding.*/
     public FragmentFifthBinding binding;
-    /**
-     * The Uname.
-     */
+    /*** The Uname.*/
     public String uname = "Hi";
-    /**
-     * The Pword.
-     */
+    /*** The Pword.*/
     public String pword;
-    /**
-     * The Post id.
-     */
+    /*** The Post id.*/
     public String postId;
-    /**
-     * The Value.
-     */
+    /*** The Value.*/
     public String value;
+    public String isTher = "no";
 
     @Override
     public View onCreateView(
@@ -63,6 +54,8 @@ public class FifthFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        setTher("no");
+
         binding.buttonFifth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,14 +63,8 @@ public class FifthFragment extends Fragment {
                         .navigate(R.id.action_fifthFragment_to_eigthFragment);
                 // Write a message to the database
                 FirebaseDatabase database = FirebaseDatabase.getInstance("https://in-control-b3e93-default-rtdb.europe-west1.firebasedatabase.app/");
-//                DatabaseReference myRef = database.getReference("Info");
-//                myRef.setValue("Info");
-//                DatabaseReference uRef = database.getReference("Info/Username");
-//                DatabaseReference pRef = database.getReference("Info/Password");
                 uname = binding.edittextFifth.getText().toString().trim();
                 pword = binding.edittextFifthAlt.getText().toString().trim();
-//                uRef.setValue(s);
-//                pRef.setValue(strpass);
 
 
                 DatabaseReference usersRef = database.getReference("users");
@@ -103,11 +90,18 @@ public class FifthFragment extends Fragment {
                         result.putString("bundleKey", postId);
                         getParentFragmentManager().setFragmentResult("requestKey", result);
 
+                        //Create two bundles one for second one for sixth...
+
                         DatabaseReference nameRef = database.getReference("users/" + postId + "/name");
                         nameRef.setValue(uname);
                         //usersRef.push().setValue(s);
                         DatabaseReference passRef = database.getReference("users/" + postId + "/pass");
                         passRef.setValue(pword);
+
+                        isTher = getTher();
+                        Bundle resultTh = new Bundle();
+                        resultTh.putString("bundleKeyTh", isTher);
+                        getParentFragmentManager().setFragmentResult("requestKeyTh", resultTh);
 
 
 //                        long moodcount = snapshot.child("-NR00h0zLo7KfJoFP7M6/mood").getChildrenCount();
@@ -142,34 +136,34 @@ public class FifthFragment extends Fragment {
     });
 
                 //Causing problems?
-//                binding.buttonFifthAltAlt.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                NavHostFragment.findNavController(FifthFragment.this)
-//                        .navigate(R.id.action_fifthFragment_to_sixthFragment);
-//            }
-//        }
-//        );
+
+
+                binding.buttonFifthAltAlt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setTher("yes");
+            }
+        }
+        );
 
     }
 
-    /**
-     * Sets val.
-     *
-     * @param s the s
-     */
+    /*** Sets val.** @param s the s*/
     public void setVal(String s) {
         this.postId = s;
     }
 
-
-    /**
-     * Gets val.
-     *
-     * @return val
-     */
+    /*** Gets val.** @return val*/
     public String getVal() {
         return postId;
+    }
+
+    /*** Sets val.** @param s the s*/
+    public void setTher(String t) {this.isTher = t;}
+
+    /*** Gets val.** @return val*/
+    public String getTher() {
+        return isTher;
     }
 
 }

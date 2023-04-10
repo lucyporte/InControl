@@ -122,14 +122,29 @@
             app:destination="@id/ninthFragment"
             app:enterAnim="@anim/nav_default_pop_enter_anim"
             app:popEnterAnim="@animator/nav_default_pop_enter_anim" />
-
         <action
             android:id="@+id/action_eigthFragment_to_fifthFragment"
             app:destination="@id/fifthFragment"
             app:enterAnim="@anim/nav_default_pop_enter_anim"
             app:popEnterAnim="@animator/nav_default_pop_enter_anim" />
+        <action
+            android:id="@+id/action_eigthFragment_to_sixthFragment"
+            app:destination="@id/sixthFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:popEnterAnim="@animator/nav_default_pop_enter_anim" />
+        <action
+            android:id="@+id/action_eigthFragment_to_tenthFragment"
+            app:destination="@id/tenthFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:popEnterAnim="@animator/nav_default_pop_enter_anim" />
     </fragment>
 
+    <fragment
+        android:id="@+id/tenthFragment"
+        android:name="com.example.incontrol.TenthFragment"
+        android:label="fragment_tenth"
+        tools:layout="@layout/fragment_tenth">
+    </fragment>
 
     <fragment
         android:id="@+id/sixthFragment"
