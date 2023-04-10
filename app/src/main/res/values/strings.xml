@@ -45,5 +45,5 @@
     <string name="typename">Type your given username here:</string>
     <string name="typepass">Type your given password here:</string>
     <string name="home">Home</string>
-    <string name="login">Login / Register</string>
+    <string name="login">Login</string>
 </resources>

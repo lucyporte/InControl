@@ -11,9 +11,10 @@
         android:id="@+id/textview_tenth"
         android:layout_width="314dp"
         android:layout_height="180dp"
+        android:layout_marginTop="200dp"
         android:text="Enter your message here:"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintBottom_toTopOf="@id/button_tenth"
+        app:layout_constraintBottom_toTopOf="@id/edittext_tenth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,10 +26,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="115dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
         android:hint="Type message here"
         android:inputType="textPersonName|textCapWords"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/edittext_tenth_alt"
         app:layout_constraintTop_toBottomOf="@id/textview_tenth" />
 
 
@@ -37,10 +39,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Type the access code here"
+        android:layout_marginBottom="90dp"
         android:inputType="textPersonName|textCapWords"
         app:layout_constraintTop_toBottomOf="@id/edittext_tenth"
         tools:layout_editor_absoluteX="75dp"
         app:layout_constraintStart_toStartOf = "@id/edittext_tenth"
+        app:layout_constraintBottom_toTopOf="@id/button_tenth"
         />
 
     <Button
@@ -48,6 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/okay"
+        android:layout_marginBottom="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -61,6 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/back"
+        android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

@@ -52,6 +52,7 @@ public class SixthFragment extends Fragment {
 
     }
 
+    //Check-in page
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 

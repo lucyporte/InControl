@@ -42,6 +42,8 @@ public class FourthFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //Gets ID
+
         getParentFragmentManager().setFragmentResultListener("requestKey2", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
@@ -49,6 +51,8 @@ public class FourthFragment extends Fragment {
                 newPostId = result;
             }
         });
+
+        //Gets database record number
 
         getParentFragmentManager().setFragmentResultListener("requestKeyA", this, new FragmentResultListener() {
             @Override
@@ -65,6 +69,7 @@ public class FourthFragment extends Fragment {
                            .navigate(R.id.action_fourthFragment_to_thirdFragment);
                    FirebaseDatabase database = FirebaseDatabase.getInstance("https://in-control-b3e93-default-rtdb.europe-west1.firebasedatabase.app/");
                    DatabaseReference nRef = database.getReference("Info/Note");
+                   //Gets user input
                    n = binding.edittextFourth.getText().toString().trim();
                    nRef.setValue(n);
 
@@ -74,9 +79,10 @@ public class FourthFragment extends Fragment {
                    DatabaseReference noteRef = database.getReference("users/" + newPostId + "/note/" + dbnumber);
                    noteRef.setValue(n);
 
-                   newNoteRef = database.getReference("users/-NR00h0zLo7KfJoFP7M6/note/" + dbnumber);
-                   newNoteRef.setValue(n);
+//                   newNoteRef = database.getReference("users/-NR00h0zLo7KfJoFP7M6/note/" + dbnumber);
+//                   newNoteRef.setValue(n);
 
+                   //Sends user ID
                    otherPostId = newPostId;
                    Bundle result3 = new Bundle();
                    result3.putString("bundleKey3", otherPostId);

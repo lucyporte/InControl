@@ -27,6 +27,8 @@ public class ThirdFragment extends Fragment {
 
     }
 
+    //Share with therapist page
+
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 

@@ -37,7 +37,11 @@ public class EigthFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //Menu page
+
 //        EACH ONE ONLY USED ONCE!
+
+        //Gets therapist flag
 
         getParentFragmentManager().setFragmentResultListener("requestKeyTh", this, new FragmentResultListener() {
             @Override
@@ -46,6 +50,8 @@ public class EigthFragment extends Fragment {
                 isTherapist = resultTher;
             }
         });
+
+        //Check-in link
 
         binding.buttonEigth.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +70,8 @@ public class EigthFragment extends Fragment {
             }
         });
 
+        //Stats link
+
         binding.buttonEigthAlt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,6 +79,8 @@ public class EigthFragment extends Fragment {
                         .navigate(R.id.action_eigthFragment_to_seventhFragment);
             }
         });
+
+        //Messages link
 
         binding.buttonEigthAltAlt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +95,8 @@ public class EigthFragment extends Fragment {
                 }
             }
         });
+
+        //Logout
 
         binding.buttonEigthAltAltAlt.setOnClickListener(new View.OnClickListener() {
             @Override

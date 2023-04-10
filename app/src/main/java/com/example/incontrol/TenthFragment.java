@@ -54,6 +54,8 @@ public class TenthFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //Send message page
+
 //        binding.buttonSixth.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {

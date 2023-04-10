@@ -11,6 +11,8 @@
         android:id="@+id/textview_third"
         android:layout_width="314dp"
         android:layout_height="180dp"
+        android:layout_marginTop="180dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/Do_you"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintBottom_toTopOf="@id/button_third"
@@ -24,12 +26,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/okay"
+        android:layout_marginTop="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textview_third"
-        app:layout_constraintVertical_bias="0.24"
         tools:text="Okay" />
 
     <Button

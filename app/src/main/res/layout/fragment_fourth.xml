@@ -10,7 +10,8 @@ tools:context=".FourthFragment">
 <TextView
     android:id="@+id/textview_fourth"
     android:layout_width="314dp"
-    android:layout_height="360dp"
+    android:layout_height="300dp"
+    android:layout_marginTop="100dp"
     android:text="@string/note_elaborate"
     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
     app:layout_constraintBottom_toTopOf="@id/button_fourth"
@@ -24,7 +25,7 @@ tools:context=".FourthFragment">
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:hint="@string/type_note"
-    android:layout_marginTop="10dp"
+    android:layout_marginBottom="30dp"
     android:inputType="text"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -36,12 +37,12 @@ tools:context=".FourthFragment">
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/next"
+    android:layout_marginTop="100dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.498"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/textview_fourth"
-    app:layout_constraintVertical_bias="0.24"
     tools:text="Next" />
 
 <Button

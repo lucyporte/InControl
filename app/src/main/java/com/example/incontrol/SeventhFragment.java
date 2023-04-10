@@ -49,6 +49,8 @@ public class SeventhFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //Gets user ID
+
         getParentFragmentManager().setFragmentResultListener("requestKey3", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
@@ -63,16 +65,19 @@ public class SeventhFragment extends Fragment {
         myList = new ArrayList<>();
         dataRef.addValueEventListener(new ValueEventListener() {
             @Override
+            //Reads from the database and gets number of last database entry
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 long moodcount = snapshot.child(myPostId + "/mood").getChildrenCount();
                 long appcount = snapshot.child(myPostId + "/apps/" + moodcount).getChildrenCount();
                 String a = "Data:\n\n";
+                //Gets last 3 values of location, time, mood and note
                 for (long i = moodcount+1; i-- > moodcount-2;) { //Dont know why this works
                     String getloc = snapshot.child(myPostId + "/loc/" + i).getValue(String.class);
                     String gettime = snapshot.child(myPostId + "/time/" + i).getValue(String.class);
                     String getmood = snapshot.child(myPostId + "/mood/" + i).getValue(String.class);
                     String getnote = snapshot.child(myPostId + "/note/" + i).getValue(String.class);
                     String b = "";
+                    //Gets list of most used apps' name and time spent on
                     for (DataSnapshot ds: snapshot.child(myPostId + "/apps/" + i).getChildren()){
                         myList.add(ds.child("packageName").getValue().toString());
                         myList.add(ds.child("totalTimeInForeground").getValue().toString());
@@ -89,6 +94,7 @@ public class SeventhFragment extends Fragment {
                     a = a + getloc + " " + gettime + " " + getmood + " " + getnote + b + "\n\n";
 //                String bigstring = getloc + "\n" + gettime + "\n" + getmood + "\n" + getnote;
                 }
+                //Displays the data to the user
                 binding.textviewSeventh.setText(a);
             }
             @Override

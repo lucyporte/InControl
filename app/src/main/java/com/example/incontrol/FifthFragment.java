@@ -66,7 +66,7 @@ public class FifthFragment extends Fragment {
                 uname = binding.edittextFifth.getText().toString().trim();
                 pword = binding.edittextFifthAlt.getText().toString().trim();
 
-
+                //Compares credentials submitted to database values
                 DatabaseReference usersRef = database.getReference("users");
                 usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -85,6 +85,7 @@ public class FifthFragment extends Fragment {
                             }
                         }
 
+                        //Bundle used for natively passing value of ID
                         postId = getVal();
                         Bundle result = new Bundle();
                         result.putString("bundleKey", postId);
@@ -92,12 +93,14 @@ public class FifthFragment extends Fragment {
 
                         //Create two bundles one for second one for sixth...
 
+                        //Sets values for username and password if don't exist already
                         DatabaseReference nameRef = database.getReference("users/" + postId + "/name");
                         nameRef.setValue(uname);
                         //usersRef.push().setValue(s);
                         DatabaseReference passRef = database.getReference("users/" + postId + "/pass");
                         passRef.setValue(pword);
 
+                        //Bundle used to pass therapist flag
                         isTher = getTher();
                         Bundle resultTh = new Bundle();
                         resultTh.putString("bundleKeyTh", isTher);

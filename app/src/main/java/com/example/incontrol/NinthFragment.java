@@ -30,6 +30,8 @@ public class NinthFragment extends Fragment {
 
     }
 
+    //Messages page
+
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
