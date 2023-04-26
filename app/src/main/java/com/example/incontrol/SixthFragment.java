@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.incontrol.databinding.FragmentSecondBinding;
@@ -39,6 +40,7 @@ public class SixthFragment extends Fragment {
     /**
      * The Is therapist.
      */
+    public String otherPostId;
     public boolean isTherapist;
 
     @Override
@@ -55,6 +57,29 @@ public class SixthFragment extends Fragment {
     //Check-in page
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        getParentFragmentManager().setFragmentResultListener("requestKey", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
+                String result = bundle.getString("bundleKey");
+                postId = result;
+            }
+        });
+
+        binding.buttonSixth.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        NavHostFragment.findNavController(SixthFragment.this)
+                                .navigate(R.id.action_sixthFragment_to_eigthFragment);
+
+                        //Sends user ID
+                        otherPostId = postId;
+                        Bundle result3 = new Bundle();
+                        result3.putString("bundleKey3", otherPostId);
+                        getParentFragmentManager().setFragmentResult("requestKey3", result3);
+                    }
+                }
+        );
 
 //        binding.buttonSixth.setOnClickListener(new View.OnClickListener() {
 //            @Override
