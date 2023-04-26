@@ -144,6 +144,11 @@
         android:name="com.example.incontrol.TenthFragment"
         android:label="fragment_tenth"
         tools:layout="@layout/fragment_tenth">
+        <action
+            android:id="@+id/action_tenthFragment_to_eigthFragment"
+            app:destination="@id/eigthFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:popEnterAnim="@animator/nav_default_pop_enter_anim" />
     </fragment>
 
     <fragment

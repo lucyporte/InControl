@@ -34,6 +34,7 @@ public class SeventhFragment extends Fragment {
     public String getname;
     public List<String> myList;
     public String postId;
+    public String thisPostId;
 
     @Override
     public View onCreateView(
@@ -135,6 +136,12 @@ public class SeventhFragment extends Fragment {
             public void onClick(View view) {
                 NavHostFragment.findNavController(SeventhFragment.this)
                         .navigate(R.id.action_seventhFragment_to_eigthFragment);
+
+                //Sends user ID
+                thisPostId = myPostId;
+                Bundle result4 = new Bundle();
+                result4.putString("bundleKey4", thisPostId);
+                getParentFragmentManager().setFragmentResult("requestKey4", result4);
 
 //                postId = myPostId;
 //                Bundle result5 = new Bundle();

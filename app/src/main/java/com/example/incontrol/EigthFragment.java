@@ -17,9 +17,13 @@ import com.example.incontrol.databinding.FragmentThirdBinding;
 public class EigthFragment extends Fragment {
 
     private FragmentEigthBinding binding;
-    public boolean isther = false;
+    public boolean isther;
     public String postId;
     public String isTherapist;
+    public String therCheck1 = "no";
+    public String therCheck2 = "no";
+    public String isTherapist2;
+    public boolean TherFlag;
 
     //Can only open each bundle once...
 
@@ -47,9 +51,14 @@ public class EigthFragment extends Fragment {
             @Override
             public void onFragmentResult(@NonNull String requestKeyTh, @NonNull Bundle bundle) {
                 String resultTher = bundle.getString("bundleKeyTh");
-                isTherapist = resultTher;
+                setTher(resultTher);
+                //therCheck1 = resultTher;
             }
         });
+
+//        if ((therCheck1 != null && therCheck1.equals("yes")) || (therCheck2 != null && therCheck2.equals("yes"))){
+//            setTher("yes");
+//        }
 
         //Check-in link
 
@@ -59,10 +68,12 @@ public class EigthFragment extends Fragment {
                 if((isTherapist != null) && isTherapist.equals("yes")){
                     NavHostFragment.findNavController(EigthFragment.this)
                             .navigate(R.id.action_eigthFragment_to_sixthFragment);
+                    TherFlag = true;
                 }
                 else {
                     NavHostFragment.findNavController(EigthFragment.this)
                             .navigate(R.id.action_eigthFragment_to_secondFragment);
+                    TherFlag = false;
                 }
 //                Bundle result2 = new Bundle();
 //                result2.putString("bundleKey2", postId);
@@ -85,7 +96,8 @@ public class EigthFragment extends Fragment {
         binding.buttonEigthAltAlt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if((isTherapist != null) && isTherapist.equals("yes")){
+
+                if(TherFlag == true){
                     NavHostFragment.findNavController(EigthFragment.this)
                             .navigate(R.id.action_eigthFragment_to_tenthFragment);
                 }
@@ -124,6 +136,22 @@ public class EigthFragment extends Fragment {
 //        therresult9th.putBoolean("therbundleKey9th", isther);
 //        getParentFragmentManager().setFragmentResult("therrequestKey9th", therresult9th);
 
+    }
+
+    /*** Sets val.** @param s the s*/
+    public void setTher(String t) {this.isTherapist = t;}
+
+    /*** Gets val.** @return val*/
+    public String getTher() {
+        return isTherapist;
+    }
+
+    /*** Sets val.** @param s the s*/
+    public void setTher2(String t) {this.isTherapist2 = t;}
+
+    /*** Gets val.** @return val*/
+    public String getTher2() {
+        return isTherapist2;
     }
 
 //    public void setTher(boolean t) {

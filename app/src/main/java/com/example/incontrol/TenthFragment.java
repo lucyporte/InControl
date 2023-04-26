@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.incontrol.databinding.FragmentTenthBinding;
@@ -39,6 +40,8 @@ public class TenthFragment extends Fragment {
      * The Is therapist.
      */
     public boolean isTherapist;
+    public String thePostId;
+    public String m;
 
     @Override
     public View onCreateView(
@@ -53,6 +56,42 @@ public class TenthFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        getParentFragmentManager().setFragmentResultListener("requestKey4", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
+                String result = bundle.getString("bundleKey4");
+                thePostId = result;
+            }
+        });
+
+        binding.buttonTenth.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    NavHostFragment.findNavController(TenthFragment.this)
+                            .navigate(R.id.action_tenthFragment_to_eigthFragment);
+                    FirebaseDatabase database = FirebaseDatabase.getInstance("https://in-control-b3e93-default-rtdb.europe-west1.firebasedatabase.app/");
+//                    DatabaseReference mRef = database.getReference("Info/Mess");
+                    //Gets user input
+                    m = binding.edittextTenth.getText().toString().trim();
+//                    mRef.setValue(m);
+                    //DatabaseReference usersRef = database.getReference("users");
+                    //DatabaseReference pushRef = usersRef.push();
+                    //String postId = pushRef.getKey();
+                    DatabaseReference messRef = database.getReference("users/" + thePostId + "/mess"); //"/mess/" + dbnumber
+                    messRef.setValue(m);
+
+//                   newNoteRef = database.getReference("users/-NR00h0zLo7KfJoFP7M6/note/" + dbnumber);
+//                   newNoteRef.setValue(n);
+
+                    //Sends user ID
+//                    otherPostId = newPostId;
+//                    Bundle result3 = new Bundle();
+//                    result3.putString("bundleKey3", otherPostId);
+//                    getParentFragmentManager().setFragmentResult("requestKey3", result3);
+                }
+            }
+        );
 
         //Send message page
 

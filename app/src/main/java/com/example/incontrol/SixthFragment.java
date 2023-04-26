@@ -42,6 +42,7 @@ public class SixthFragment extends Fragment {
      */
     public String otherPostId;
     public boolean isTherapist;
+    public String isATher;
 
     @Override
     public View onCreateView(
@@ -77,6 +78,12 @@ public class SixthFragment extends Fragment {
                         Bundle result3 = new Bundle();
                         result3.putString("bundleKey3", otherPostId);
                         getParentFragmentManager().setFragmentResult("requestKey3", result3);
+
+                        //Bundle used to pass therapist flag
+                        isATher = "yes";
+                        Bundle resultTh2 = new Bundle();
+                        resultTh2.putString("bundleKeyTh2", isATher);
+                        getParentFragmentManager().setFragmentResult("requestKeyTh2", resultTh2);
                     }
                 }
         );
