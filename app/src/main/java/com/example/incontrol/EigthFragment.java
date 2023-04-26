@@ -66,14 +66,14 @@ public class EigthFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if((isTherapist != null) && isTherapist.equals("yes")){
+                    setTherFlag(true);
                     NavHostFragment.findNavController(EigthFragment.this)
                             .navigate(R.id.action_eigthFragment_to_sixthFragment);
-                    TherFlag = true;
                 }
                 else {
+                    setTherFlag(false);
                     NavHostFragment.findNavController(EigthFragment.this)
                             .navigate(R.id.action_eigthFragment_to_secondFragment);
-                    TherFlag = false;
                 }
 //                Bundle result2 = new Bundle();
 //                result2.putString("bundleKey2", postId);
@@ -97,7 +97,7 @@ public class EigthFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if(TherFlag == true){
+                if(FifthFragment.isTher.equals("yes")){
                     NavHostFragment.findNavController(EigthFragment.this)
                             .navigate(R.id.action_eigthFragment_to_tenthFragment);
                 }
@@ -136,6 +136,14 @@ public class EigthFragment extends Fragment {
 //        therresult9th.putBoolean("therbundleKey9th", isther);
 //        getParentFragmentManager().setFragmentResult("therrequestKey9th", therresult9th);
 
+    }
+
+    /*** Sets val.** @param s the s*/
+    public void setTherFlag(boolean t) {this.TherFlag = t;}
+
+    /*** Gets val.** @return val*/
+    public boolean getTherFlag() {
+        return TherFlag;
     }
 
     /*** Sets val.** @param s the s*/

@@ -1,11 +1,16 @@
 package com.example.incontrol;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.navigation.fragment.NavHostFragment;
@@ -56,8 +61,21 @@ public class SixthFragment extends Fragment {
     }
 
     //Check-in page
+
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        createNotificationChannel();
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), "channelId")
+                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setContentTitle("Check-in alert!")
+                .setContentText("Daily check-in reminder")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(requireContext());
+        // notificationId is a unique int for each notification that you must define
+        notificationManager.notify(1, builder.build());
 
         getParentFragmentManager().setFragmentResultListener("requestKey", this, new FragmentResultListener() {
             @Override
@@ -145,6 +163,24 @@ public class SixthFragment extends Fragment {
 //            }
 //        });
     }
+
+
+
+        private void createNotificationChannel() {
+            // Create the NotificationChannel, but only on API 26+ because
+            // the NotificationChannel class is new and not in the support library
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                CharSequence name = "myChannel";
+                String description = "notifChannel";
+                int importance = NotificationManager.IMPORTANCE_DEFAULT;
+                NotificationChannel channel = new NotificationChannel("channelId", name, importance);
+                channel.setDescription(description);
+                // Register the channel with the system; you can't change the importance
+                // or other notification behaviors after this
+                NotificationManager notificationManager = requireContext().getSystemService(NotificationManager.class);
+                notificationManager.createNotificationChannel(channel);
+            }
+        }
 
 
 //    /**

@@ -38,7 +38,7 @@ public class FifthFragment extends Fragment {
     public String postId;
     /*** The Value.*/
     public String value;
-    public String isTher = "no";
+    public static String isTher;
 
     @Override
     public View onCreateView(
