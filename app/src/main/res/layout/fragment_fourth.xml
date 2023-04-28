@@ -11,10 +11,9 @@ tools:context=".FourthFragment">
     android:id="@+id/textview_fourth"
     android:layout_width="314dp"
     android:layout_height="300dp"
-    android:layout_marginTop="100dp"
+    android:layout_marginTop="70dp"
     android:text="@string/note_elaborate"
     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-    app:layout_constraintBottom_toTopOf="@id/button_fourth"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
@@ -25,12 +24,13 @@ tools:context=".FourthFragment">
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:hint="@string/type_note"
-    android:layout_marginBottom="30dp"
+    android:layout_marginTop="0dp"
+    android:layout_marginBottom="120dp"
     android:inputType="text"
-    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/textview_fourth"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@id/textview_fourth"/>
+    />
 
 <Button
     android:id="@+id/button_fourth"
@@ -42,7 +42,7 @@ tools:context=".FourthFragment">
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.498"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/textview_fourth"
+    app:layout_constraintTop_toBottomOf="@id/edittext_fourth"
     tools:text="Next" />
 
 <Button
